@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.537">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zion Gassner">
+<meta name="dcterms.date" content="2023-01-27">
+
+<title>Zion’s Extraordinary Python Adventure - Global Warming: Spread, Change, and Resistance</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Zion’s Extraordinary Python Adventure</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Zion’s Blog</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Global Warming: Spread, Change, and Resistance</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">week 3</div>
+                <div class="quarto-category">homework</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Zion Gassner </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 27, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="the-plan" class="level1">
+<h1>The Plan</h1>
+<p>In this post, I’m going to create some interactive tools that you can play with that really help you understand the degree to which global warming has affected temperatures across the Earth. And, best of all, I’ll teach you how to do it as well, assuming you have some basic Python knowledge. We’re going to be using a package called <code>plotly</code> that helps us easily make these graphics, but we’re also going to employ <code>pandas</code> and <code>sqlite3</code>.</p>
+<p><strong>Acknowledgement:</strong> I refer to the Jupyter notebooks provided by Professor Seyoon Ko for PIC16B as they give clear instructions on how to create SQL databases from <code>pandas</code> data frames. I do my best to present these ideas in an original manner, but the setup is not my own work!</p>
+</section>
+<section id="part-1-databases" class="level1">
+<h1>Part 1: Databases</h1>
+<p>We’re going to be using temperature data collected by the National Oceanic and Atmospheric Administration (NOAA) that dates back to the 1960s. As a result, we’re going to be downloading, manipulating, and presenting a large quantity of information. While in PIC16A you probably worked completely within the boundaries of your Jupyter notebook to play with <code>pandas</code> data frames, real data can often take up gigabytes of space–not just in your hard drive, but also in your memory!</p>
+<p>Because of this, we’re going to need to be able to access our data in a smart, memory efficient way and break past the borders of this <code>.ipynb</code> file, and to do that, we’re going to make use of another programming language called SQL (Structured Query Language) which can create and access database files. You might be wondering how that’s possible since this is a Python notebook. The answer is that Python has a package called <code>sqlite3</code> that allows us to write and execute SQL commands using SQL syntax with a series of methods and commands. Let’s start by importing the packages we need</p>
+<div id="81bb5c42" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#We'll use these later!</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotly <span class="im">import</span> express <span class="im">as</span> px </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>pio.renderers.default<span class="op">=</span><span class="st">"iframe"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Before proceeding further, let’s take a step back. I want to be able to neatly present some information, but I have to gather that information from potentially large files that I don’t want to load completely into this notebook. How do we do that? Well, have you ever filtered through your emails by specifying the sender, the date that a message arrived, or maybe the folder that you’ve already placed it in? That’s called querying, and it’s similar to what SQL does. For our purposes, you can imagine that SQL allows us to search for very specific information in a certain type of file called a <strong>database</strong>.</p>
+<p>You can imagine a database to be like your email account, in that it contains all of the information you’re interested in, and each database contains different <strong>tables</strong> which you can imagine are like different folders for your emails. Tables can also be compared to data frames in <code>Pandas</code> as they have a similar two-dimensional structure with indexed rows and variable columns.</p>
+<p>If you’ve used Microsoft Excel, it’s also easy to imagine a SQL database as a <strong>workbook</strong> while each table is an individual <strong>spreadsheet</strong>, and just like in Excel, we can even connect data from one table (sheet) to another.</p>
+<p>So, in summary, we’re going to do the following:</p>
+<ol type="1">
+<li>Place our data of interest into a database.</li>
+<li>Use SQL (via <code>sqlite</code>) to query (access) bits of our data to avoid clogging our memory.</li>
+<li>Use the queried data to make visualizations (the fun part!)</li>
+</ol>
+<p>Let’s get started.</p>
+<section id="part-1a-creating-the-database" class="level2">
+<h2 class="anchored" data-anchor-id="part-1a-creating-the-database">Part 1a: Creating the Database</h2>
+<p>For our purposes, databases exist as files in our working directory with the extension <code>.db</code>. Before we do anything, we can create a blank database file where we’ll be inputting our tables. Just think of the follwing command as a blank canvas:</p>
+<div id="2e6be847" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"climate.db"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Why is it called <code>connect</code>? Well, <code>connect</code> actually looks for an existing file called <code>climate.db</code> in this case, but if it doesn’t exist, it will create one, so we also use the command to make new databases.</p>
+<p>But, regardless of whether or not the file already exists, <code>connect</code> also, as the name suggests, connects to the file name in its argument (<code>climate.db</code>) in our case. This is what allows us to establish a link between our Python notebook and our database, which is essential. There are many other programs that can allow you to write and execute SQL queries, but <code>sqlite</code> is special in that we can just use our existing Python IDE as an interface to use SQL, but we need to connect to some sort of datbase in order to do that.</p>
+<p>Also, you might be wondering why we stored the output of this function as <code>conn</code>. Think of it as like a variable name for our database so that we can more easily use it in later function calls.</p>
+</section>
+<section id="part-1b-preparing-the-tables" class="level2">
+<h2 class="anchored" data-anchor-id="part-1b-preparing-the-tables">Part 1b: Preparing the Tables</h2>
+<p>Okay, so now we actually need to populate our database with tables. To do this, we’re going to employ a method that comes with <code>pandas</code> called <code>.to_sql()</code> that allows us to turn a data frame into a SQL table within a database of our choice. First, though, we actually need to get our hands on our data. There are 3 <code>.csv</code> files that we’re interested in: one called <code>temps</code> that contains temperature data, one called <code>station-metadata.csv</code> which contains information about the weather stations where the aforementioned data was collected, and finally, one which we will call <code>countries</code>, which will allow us to identify the country (or region) in which each station is located. The first two files come from NOAA but were provided to my PIC16B class by my professor, Seyoon Ko. I would link these files, but they are behind our BruinLearn page. The last file was also provided by Professor Ko but was taken from the URL that appears in the code block below. I’m not sure who to attribute it to.</p>
+<p>(Note that, by the way, although we’re doing this because we want to avoid using too many memory-intensive operations, we’re going to have to load these files at least once into our notebook so that we can turn them into SQL tables in the first place).</p>
+<div id="717ff742" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> pd.read_csv(<span class="st">"temps.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>stations <span class="op">=</span> pd.read_csv(<span class="st">"station-metadata.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/mysociety/gaze/master/data/fips-10-4-to-iso-country-codes.csv"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#This may take a bit to run.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>While it’s tempting to immediately try to convert these 3 data frames into SQL tables, we first want to clean the data up a little bit. Let’s start with <code>temps</code>: (The following steps are taken <strong>exactly</strong> from Prof.&nbsp;Ko’s notebook)</p>
+<div id="932d8b63" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">VALUE1</th>
+<th data-quarto-table-cell-role="th">VALUE2</th>
+<th data-quarto-table-cell-role="th">VALUE3</th>
+<th data-quarto-table-cell-role="th">VALUE4</th>
+<th data-quarto-table-cell-role="th">VALUE5</th>
+<th data-quarto-table-cell-role="th">VALUE6</th>
+<th data-quarto-table-cell-role="th">VALUE7</th>
+<th data-quarto-table-cell-role="th">VALUE8</th>
+<th data-quarto-table-cell-role="th">VALUE9</th>
+<th data-quarto-table-cell-role="th">VALUE10</th>
+<th data-quarto-table-cell-role="th">VALUE11</th>
+<th data-quarto-table-cell-role="th">VALUE12</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>-89.0</td>
+<td>236.0</td>
+<td>472.0</td>
+<td>773.0</td>
+<td>1128.0</td>
+<td>1599.0</td>
+<td>1570.0</td>
+<td>1481.0</td>
+<td>1413.0</td>
+<td>1174.0</td>
+<td>510.0</td>
+<td>-39.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ACW00011604</td>
+<td>1962</td>
+<td>113.0</td>
+<td>85.0</td>
+<td>-154.0</td>
+<td>635.0</td>
+<td>908.0</td>
+<td>1381.0</td>
+<td>1510.0</td>
+<td>1393.0</td>
+<td>1163.0</td>
+<td>994.0</td>
+<td>323.0</td>
+<td>-126.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ACW00011604</td>
+<td>1963</td>
+<td>-713.0</td>
+<td>-553.0</td>
+<td>-99.0</td>
+<td>541.0</td>
+<td>1224.0</td>
+<td>1627.0</td>
+<td>1620.0</td>
+<td>1596.0</td>
+<td>1332.0</td>
+<td>940.0</td>
+<td>566.0</td>
+<td>-108.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ACW00011604</td>
+<td>1964</td>
+<td>62.0</td>
+<td>-85.0</td>
+<td>55.0</td>
+<td>738.0</td>
+<td>1219.0</td>
+<td>1442.0</td>
+<td>1506.0</td>
+<td>1557.0</td>
+<td>1221.0</td>
+<td>788.0</td>
+<td>546.0</td>
+<td>112.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ACW00011604</td>
+<td>1965</td>
+<td>44.0</td>
+<td>-105.0</td>
+<td>38.0</td>
+<td>590.0</td>
+<td>987.0</td>
+<td>1500.0</td>
+<td>1487.0</td>
+<td>1477.0</td>
+<td>1377.0</td>
+<td>974.0</td>
+<td>31.0</td>
+<td>-178.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>There are a few major problems at the moment with this table, which you might’ve not known without prior information. Firstly, it’s unclear what the columns <code>VALUE1</code> through <code>VALUE12</code> refer to on their own, though you may be able to guess that they have to do with months. Indeed, they represent the average temperature taken at a given station in a given year during some month (<code>VALUE1</code> being January and <code>VALUE12</code> being December).</p>
+<p>The units of the temperature, however, are actually in hundreths of a degree Celsius. This is not a unit that we’re used to working with.</p>
+<p>And finally, on a more qualitative side of things, it’s not the best idea to keep <code>VALUE1</code> through <code>VALUE12</code> as different columns. Why? Because, although they are presented as separate variables, they actually measure the same thing (namely, temperature in hundreths of a degree). In general, we should have it so that each column represents a distinct variable.</p>
+<p>So, it seems that there are three problems that we need to solve:</p>
+<ol type="1">
+<li>Column names are ambiguous.</li>
+<li>Units for data are not the best.</li>
+<li>Data frame needs to be restructured.</li>
+</ol>
+<p>We’ll start with the third item, since we shouldn’t worry about renaming things our changing units if we don’t even have the structure down in the first place. But how do we do this? In my previous blog post (HW 0), I briefly introduced the idea of stacking in <code>pandas</code>, and we’re going to be using that again this time.</p>
+<p>If you don’t recall, here’s the basic idea of stacking: * Specify some column(s) that will be “preserved” * The <code>.stack()</code> method will combine all other columns into one big column Let’s give this a go:</p>
+<div id="41ac7764" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> temps.set_index(keys <span class="op">=</span> [<span class="st">"ID"</span>,<span class="st">"Year"</span>])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> temps.stack()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>ID           Year        
+ACW00011604  1961  VALUE1     -89.0
+                   VALUE2     236.0
+                   VALUE3     472.0
+                   VALUE4     773.0
+                   VALUE5    1128.0
+dtype: float64</code></pre>
+</div>
+</div>
+<p>Okay, so what did we do? First, we used the <code>.set_index()</code> method which allows us to turn a set of columns into the index of the data frame. This is important because these columns will <em>not</em> be stacked. In our case, we want to preserve the station ID and the year in which the measurement was taken.</p>
+<p>Then, the remaining columns are stacked (combine) into one “column” once we call <code>.stack()</code>. This actually turns the object into a <code>pandas</code> series. Recall from PIC16A that a series is like a generalization of a list that we can imagine as one column of a data frame. A series also has an index, which in our case, contains three different items for each numerical value (this technically makes it a <code>MultiIndex</code>): the <code>ID</code> and <code>Year</code> (which we already “preserved” when we called <code>.set_index()</code>, and any one of the 12 possible strings <code>VALUE1</code> through <code>VALUE12</code>. This final item allows us to remember which column that got eliminated the observation originated from.</p>
+<p>But, if we look at the index explicitly, we’ll notice an interesting detail:</p>
+<div id="fcb51bf6" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>temps.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>MultiIndex([('ACW00011604', 1961,  'VALUE1'),
+            ('ACW00011604', 1961,  'VALUE2'),
+            ('ACW00011604', 1961,  'VALUE3'),
+            ('ACW00011604', 1961,  'VALUE4'),
+            ('ACW00011604', 1961,  'VALUE5'),
+            ('ACW00011604', 1961,  'VALUE6'),
+            ('ACW00011604', 1961,  'VALUE7'),
+            ('ACW00011604', 1961,  'VALUE8'),
+            ('ACW00011604', 1961,  'VALUE9'),
+            ('ACW00011604', 1961, 'VALUE10'),
+            ...
+            ('ZIXLT622116', 1970,  'VALUE3'),
+            ('ZIXLT622116', 1970,  'VALUE4'),
+            ('ZIXLT622116', 1970,  'VALUE5'),
+            ('ZIXLT622116', 1970,  'VALUE6'),
+            ('ZIXLT622116', 1970,  'VALUE7'),
+            ('ZIXLT622116', 1970,  'VALUE8'),
+            ('ZIXLT622116', 1970,  'VALUE9'),
+            ('ZIXLT622116', 1970, 'VALUE10'),
+            ('ZIXLT622116', 1970, 'VALUE11'),
+            ('ZIXLT622116', 1970, 'VALUE12')],
+           names=['ID', 'Year', None], length=13992662)</code></pre>
+</div>
+</div>
+<p>We see that each observation is <em>explicitly</em> linked to the three aforementioned pieces of information (ID, year, <code>VALUE</code> column). It’s as if that our series was really a data frame in disguise, where the first 3 columns are the items in the index (ID, year, and <code>VALUE</code> column name) while the last column is the actual “data” of the series (the temperature recordings).</p>
+<p>Well, we can actually force this data frame to resurge by calling the <code>.reset_index()</code> method on <code>temps</code>, which eliminates the index that we manually specified above and replaces it with the default one (just numbers), but this would turn the current <code>MultiIndex</code> into “data columns” which is not possible in a Series, so <code>temps</code> will revert to being a data frame. The <strong>nicest and most important part</strong>, however, is because the <code>VALUE</code> column name is now in our index, it will be added as a new column within our data frame.</p>
+<div id="2b5a0222" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> temps.reset_index()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">level_2</th>
+<th data-quarto-table-cell-role="th">0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE1</td>
+<td>-89.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE2</td>
+<td>236.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE3</td>
+<td>472.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE4</td>
+<td>773.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE5</td>
+<td>1128.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The names of the columns <code>ID</code> and <code>Year</code> are preserved since they were in the index of our series. Our new <code>VALUE</code> name column is given a default name <code>level_2</code>, and the temperature column is called <code>0</code> since our series data didn’t have any name associated with it. From here, though, we can fix the other two problems we had earlier: the naming of our columns and the units of our recordings!</p>
+<p>First, let’s rename (using the <code>.rename()</code> method) our columns to something that we can interpret more easily. Note that the string that we have for <code>VALUE</code> precisely corresponds to the month in which the observation was made, so we name this column <code>Month</code>.</p>
+<p>Note that the <code>columns</code> argument of <code>.rename()</code> is a dictionary where the keys are the existing column names and the values are the names that we wish to give to the columns.</p>
+<div id="c40daf2a" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> temps.rename(columns <span class="op">=</span> {<span class="st">"level_2"</span>  : <span class="st">"Month"</span> , <span class="dv">0</span> : <span class="st">"Temp"</span>}) <span class="co">#Input as a dictionary.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">Temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE1</td>
+<td>-89.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE2</td>
+<td>236.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE3</td>
+<td>472.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE4</td>
+<td>773.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>VALUE5</td>
+<td>1128.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Now, we don’t want the values of the <code>Month</code> column to be have the <code>VALUE</code> string beforehand. It would make a lot more sense to just store the number at the very end. We also need to convert it to an integer (since right now it’s merely a string).</p>
+<p>We’ll also divide the <code>Temp</code> column by 100.</p>
+<div id="0738c9fc" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>temps[<span class="st">"Month"</span>] <span class="op">=</span> temps[<span class="st">"Month"</span>].<span class="bu">str</span>[<span class="dv">5</span>:].astype(<span class="bu">int</span>) </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>temps[<span class="st">"Temp"</span>]  <span class="op">=</span> temps[<span class="st">"Temp"</span>] <span class="op">/</span> <span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="a2385c08" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">Temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>1</td>
+<td>-0.89</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>2</td>
+<td>2.36</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>3</td>
+<td>4.72</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>4</td>
+<td>7.73</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>ACW00011604</td>
+<td>1961</td>
+<td>5</td>
+<td>11.28</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Looks pretty good to me! Let’s look at our other tables.</p>
+<div id="a78272d2" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>stations.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">ID</th>
+<th data-quarto-table-cell-role="th">LATITUDE</th>
+<th data-quarto-table-cell-role="th">LONGITUDE</th>
+<th data-quarto-table-cell-role="th">STNELEV</th>
+<th data-quarto-table-cell-role="th">NAME</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>ACW00011604</td>
+<td>57.7667</td>
+<td>11.8667</td>
+<td>18.0</td>
+<td>SAVE</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>AE000041196</td>
+<td>25.3330</td>
+<td>55.5170</td>
+<td>34.0</td>
+<td>SHARJAH_INTER_AIRP</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>AEM00041184</td>
+<td>25.6170</td>
+<td>55.9330</td>
+<td>31.0</td>
+<td>RAS_AL_KHAIMAH_INTE</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>AEM00041194</td>
+<td>25.2550</td>
+<td>55.3640</td>
+<td>10.4</td>
+<td>DUBAI_INTL</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>AEM00041216</td>
+<td>24.4300</td>
+<td>54.4700</td>
+<td>3.0</td>
+<td>ABU_DHABI_BATEEN_AIR</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="5ce1b013" class="cell" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>countries.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="88">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">FIPS 10-4</th>
+<th data-quarto-table-cell-role="th">ISO 3166</th>
+<th data-quarto-table-cell-role="th">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>AF</td>
+<td>AF</td>
+<td>Afghanistan</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>AX</td>
+<td>-</td>
+<td>Akrotiri</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>AL</td>
+<td>AL</td>
+<td>Albania</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>AG</td>
+<td>DZ</td>
+<td>Algeria</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>AQ</td>
+<td>AS</td>
+<td>American Samoa</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="917fbed1" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of regions in `stations`:"</span>, <span class="bu">len</span>(<span class="bu">set</span>(stations[<span class="st">'ID'</span>].<span class="bu">str</span>[<span class="dv">0</span>:<span class="dv">2</span>])))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of regions in `countries`:"</span>, <span class="bu">len</span>(countries[<span class="st">'FIPS 10-4'</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Number of regions in `stations`: 237
+Number of regions in `countries`: 279</code></pre>
+</div>
+</div>
+<p>I will not be deleting the extra rows in <code>countries</code> because it may be possible for some of the countries that do not appear in <code>stations</code> to be represented in updated versions of the data, and we would not be able to access the information that we wanted correctly if, for instance, we were basing our <code>countries</code> table based on what was included in January of 2024.</p>
+</section>
+<section id="c-conversion-to-sql-tables" class="level2">
+<h2 class="anchored" data-anchor-id="c-conversion-to-sql-tables">1c: Conversion to SQL Tables</h2>
+<p>We’re almost ready to place our data into our empty <code>climate.db</code> file that we created earlier. But, before we do that, there’s one more thing we need to keep in mind: memory usage. Recall that we will be using the <code>.to_sql()</code> method to turn our data frames into tables. This essentially requires a large transfer of data which might be dangerous or annoying if we have very big files. We can measure the memory used by our current frames with the <code>memory_usage()</code> method (note that the results are an approximation).</p>
+<p>See the documentation in the link below for more details. The argument <code>deep = True</code> more correctly considers the memory taken up by string. By default, the function outputs results by column, so <code>.sum()</code> will tell us the total memory usage in bytes.</p>
+<p>Documentation: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.memory_usage.html).</p>
+<div id="4d2a7113" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `countries`: "</span>, <span class="bu">round</span>(countries.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span><span class="dv">1024</span>,<span class="dv">2</span>), <span class="st">"kilobytes"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `stations`: "</span>, <span class="bu">round</span>(stations.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span><span class="dv">1024</span>,<span class="dv">2</span>), <span class="st">"kilobytes"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `temps`: "</span>, <span class="bu">round</span>(temps.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span><span class="dv">1024</span>,<span class="dv">2</span>), <span class="st">"kilobytes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Memory used by `countries`:  50.62 kilobytes
+Memory used by `stations`:  4340.02 kilobytes
+Memory used by `temps`:  1257153.36 kilobytes</code></pre>
+</div>
+</div>
+<p><code>countries</code> is relatively small, only taking up about 50.6 kilobytes. <code>stations</code>, however, seems to take up more than 4 megabytes. <code>temps</code>, though is massive!</p>
+<div id="de29b55a" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `temps`: "</span>, <span class="bu">round</span>(temps.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span>(<span class="dv">1024</span><span class="op">**</span><span class="dv">2</span>),<span class="dv">2</span>), <span class="st">"megabytes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Memory used by `temps`:  1227.69 megabytes</code></pre>
+</div>
+</div>
+<p>This is more than a gigabyte of data! This is really big, and it would probably be unwise to directly turn it into a SQL table. Let’s, then, start with <code>countries</code> and <code>stations</code> first, and we’ll save the biggest for last.</p>
+<div id="c5802c84" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>stations.to_sql(<span class="st">"stations"</span>, conn, if_exists <span class="op">=</span> <span class="st">"replace"</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>27585</code></pre>
+</div>
+</div>
+<p>Assuming everything’s gone well, <code>climate.db</code> now contains our table!</p>
+<p>Let’s break down the above command. The first argument specifies the name we want to give to our table, which will still be <code>stations</code>. The second argument is the database that we want to place it in (remember what I said earlier about <code>conn</code> representing <code>climate.db</code>?). The argument <code>if_exists</code> tells us what to do if we happen to find a table in our database that’s already called <code>stations</code>. Since our database is empty, we won’t find any such tables, but by setting the argument to <code>replace</code>, we will overwrite any files with the same name. <code>index = False</code> indicates that we do not want to transfer over the index of our data frame into the table.</p>
+<p>The numerical output of our method call, by the way, is the number of rows in our table</p>
+<p>Let’s do the same thing with <code>countries</code>.</p>
+<div id="dc767479" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>countries.to_sql(<span class="st">"countries"</span>, conn, if_exists <span class="op">=</span> <span class="st">"replace"</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>279</code></pre>
+</div>
+</div>
+<p>Now, let’s move onto <code>temps</code>. How are we going to transfer more than a gigabyte of data? The answer is by doing so bit by bit. Specifically, we can iteratively transfer pieces of our data frame called chunks into our database. In the original Python notebook from class, our professor created a for loop that took advantage of an argument inside of <code>read_csv()</code> called <code>chunksize</code> that created an iterator out of our original data divided into a set number of pieces.</p>
+<p>In that for loop, our professor used a function he created that would clean the data frame as we did above before creating the iterator. So, even though we’ve already cleaned our data above, let’s walk through the steps one more time so that we can implement this for our iterator:</p>
+<ol type="1">
+<li>Use <code>.set_index()</code> and <code>.stack()</code> to place all temperature measurements in one column (series).</li>
+<li>Convert this series back into a data frame with <code>.reset_index()</code></li>
+<li>Edit and rename the <code>Month</code> and <code>Temp</code> columns.</li>
+</ol>
+<p>Let’s make a function that does this for a data frame. The idea will then be to apply this function onto different chunks of the original data before finally combining them into a table in our database.</p>
+<div id="5802875e" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This function is taken directly from Professor Ko's notebook.</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#I rename it to `prepare_temps` to make its usage explicit:</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prepare_temps(df):</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Cleans a chunk ``df`` of the `temps.csv` file based on the criteria elaborated earlier. </span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Note that this function implicitly assumes that its argument comes from `temps.csv`.</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">    It will otherwise likely throw an error since it relies on the existence of certain column names.</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.set_index(keys<span class="op">=</span>[<span class="st">"ID"</span>, <span class="st">"Year"</span>]) <span class="co">#"Row names"</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.stack() <span class="co">#Everything else (temperature names) gets stacked</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.reset_index() <span class="co">#Converts MultiIndex into columns</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.rename(columns <span class="op">=</span> {<span class="st">"level_2"</span>  : <span class="st">"Month"</span> , <span class="dv">0</span> : <span class="st">"Temp"</span>}) <span class="co">#Renames new columns</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"Month"</span>] <span class="op">=</span> df[<span class="st">"Month"</span>].<span class="bu">str</span>[<span class="dv">5</span>:].astype(<span class="bu">int</span>) <span class="co">#Converts `Month` to integer</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"Temp"</span>]  <span class="op">=</span> df[<span class="st">"Temp"</span>] <span class="op">/</span> <span class="dv">100</span> <span class="co">#Convert to degrees Celsius</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, let’s make our iterator. We’ll be using a <code>chunksize</code> of 100000 just like Professor Ko, which splits our data frame into pieces of about 19 MB.</p>
+<div id="971dbd5f" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>temps_iter <span class="op">=</span> pd.read_csv(<span class="st">"temps.csv"</span>, chunksize <span class="op">=</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Our general idea is to go through each chunk of the data and then clean it. Then, once the chunk is cleaned, we’ll add it to the database in a table called <code>temps</code>. Note that because of this iterative method, the <code>if_exists</code> arugment of <code>.to_sql()</code> becomes relevant, since after we input the first chunk, a table called <code>temps</code> already exists. We’ll make sure to use the other possible value of <code>if_exists</code>, <code>'append'</code>, to add onto our table. The code chunk below is also taken from Professor Ko.</p>
+<div id="941a425f" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, temps_chunk <span class="kw">in</span> <span class="bu">enumerate</span>(temps_iter):</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> prepare_temps(temps_chunk)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    df.to_sql(<span class="st">"temps"</span>, conn, if_exists <span class="op">=</span> <span class="st">"replace"</span> <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"append"</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Firstly, to properly iterate through <code>temps_iter</code>, we should be using the <code>enumerate()</code> function. If you recall from PIC16A, this essentially creates the idea of an index and a value (almost like a dictionary) for our iterator. The “value”, in this case, is a <code>pandas</code> <code>DataFrame</code> object that has (initially) 100000 rows. This is why we’re able to then input <code>temps_chunk</code> into the <code>prepare_temps()</code> function we wrote earlier.</p>
+<p>As for <code>if_exists</code>, we will only replace an existing table called <code>temps</code> (which should not exist) during the first iteration. For all other chunks, we’ll append to the table that is created during the first iteration.</p>
+<p>As good practice, we should close the connection that we made between this notebook and <code>climate.db</code>, since now that our file has all the information we need, we only need to access it while we’re running queries or making edits!</p>
+<div id="d995d820" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>conn.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="summary-of-part-1" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-part-1">Summary of Part 1:</h2>
+<p>We’ve now created a SQL database called <code>climate.db</code> that contains 3 different tables: <code>temps</code>, <code>stations</code>, and <code>countries</code>. In order to do this, we had to use <code>sqlite</code> to link said database with our notebook, and we then had to use the <code>.to_sql()</code> method in order to convert the data that we had loaded as <code>pandas</code> data frames into tables.</p>
+<p>To make <code>countries</code>, we used a for loop with an iterator that allowed us to add chunks of the data to our table so as to not have to transfer a large amount of data at once.</p>
+</section>
+</section>
+<section id="part-2-query-function" class="level1">
+<h1>Part 2: Query Function</h1>
+<p>Actually running a query in SQL is a bit long-winded. For instance, the command for getting the average elevation of stations whose longitude is above 80 degrees would look something like this (and this is just the SQL syntax):</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">AVG</span>(elevation) <span class="kw">AS</span> average_elevation</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> stations</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> longitude <span class="op">&gt;</span> <span class="dv">80</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>While not a complete pain to type, it’s a bit annoying to have to do this every time we want to access some data, especially if we plan to use that data in our Python notebook for some other purpose many times. In order to have an easier time creating our data visualizations, we’re going to create a function called <code>query_climate_database()</code> that allows us to run SQL queries from our notebook, once again using the <code>sqlite</code> package.</p>
+<p>In particular, I want to create a function that allows me to see how the average temperature during a given month in a specific country has changed over time. To do this, we’re going to map each station to the coefficient term of the linear regression of temperatures over time and display it on a map. This, of course, requires us to use plot-generating functions, but furthermore, it also requires me to query a large chunk of data (with <code>query_climate_database</code>). I wrote this function in a different file called <code>climate_database.py</code>.</p>
+<div id="408a0121" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> climate_database <span class="im">import</span> query_climate_database</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> inspect</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(query_climate_database))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>def query_climate_database(db_file, country, year_begin, year_end, month):
+    """
+    This function uses `sqlite3` to query a .db database ``db_file`` for temperature data in ``country`` between
+    the years of ``year_begin`` and ``year_end`` (inclusive) during ``month``.
+    The output is a `pandas` data frame ``df`` which contains the following columns:
+    ``NAME``: The name of the weather station where the temperature was measured.
+    ``LATITUDE``: The latitude of the weather station.
+    ``LONGITUDE``: The longitude of the weather station.
+    ``Country``: The name of the country where the station is located.
+    ``Year``: The year during which the measurement was taken, will be between ``year_begin`` and ``year_end``, inclusive.
+    ``Month``: The month during which the temperature measurement was taken, equal to the argument ``month``.
+    ``Temp``: The recorded temperature in degrees Celsius.
+    """
+    with sqlite3.connect(f"{db_file}") as conn:
+  
+        cmd = \
+        f"""
+        SELECT S.NAME, S.LATITUDE, S.LONGITUDE, t1.Name AS Country, t1.Year, t1.Month, t1.Temp
+        FROM stations S
+        INNER JOIN
+        (SELECT T.ID, T.Year, T.Month, T.Temp, C.Name
+        FROM temps T
+        LEFT JOIN countries C ON SUBSTRING(T.ID,1,2) = C."FIPS 10-4"
+        WHERE C.Name = "{country}" AND (T.Year BETWEEN {year_begin} AND {year_end}) AND T.Month = {month})
+        AS t1 ON S.ID = t1.ID
+        """
+        
+        df = pd.read_sql_query(cmd, conn)
+        
+        return df
+</code></pre>
+</div>
+</div>
+<p>As the docstring displayed above explains, the function runs a very specific query on a database of our choice (in my demonstration it will always be called <code>climate.db</code> since that’s what I named my file) subject to a few parameters: the country of interest, an inclusive date range (given by specifiying a beginning and end date), and the specific month we’re interested in.</p>
+<p>The query returns, in addition to the information that we specified in the function call, the name of each station, its latitude/longitude, and the recorded average temperature.</p>
+<p>On the technical side, there are a few things to note. On a broad level, the SQL query is stored as a string called <code>cmd</code> which is passed to <code>read_sql_qury</code>, converts our SQL query into a <code>pandas</code> data frame, which is why we’re able to return anything in the first place. In term of the creation of the query, firstly, a multi-line string can be written with two sets of triple quotation marks (“““), which allows us to create long, organized strings. The <code>f</code> placed below the first quotation mark converts our string into what’s known as an f-string, which allows us to substitute text inside based on other variables by placing curly braces around pieces of code that we want to interpret. For example, in the second to last line of the query, we have <code>BETWEEN {year_begin} AND {year_end}</code>. Python will place the numerical values that the user inputs for <code>year_begin</code> and <code>year_end</code> as strings inside of our larger f-string.</p>
+<p>As for the syntax of the query itself, I could go into a lot of detail about SQL (since I already have prior SQL experience before taking PIC16B), but I will try to keep it short. What makes this query complicated is the fact that it contains something known as a subquery (a query within a query) that allows us to combine multiple tables within our database. So, let’s start with the inner query, which starts on the 4th line of the f-string with <code>(SELECT T.ID...</code> and ends on the second-to-last line with <code>T.Month = {month}</code>.</p>
+<p>This inner query selects (think of the <code>[]</code> operator on a <code>pandas</code> frame with column names) columns ID, Year, Month, and Temp from the table <code>temps</code> and also the column <code>Name</code> from <code>countries</code>. We’re able to grab columns from multiple tables because the next operation is called a <code>LEFT JOIN</code> and is akin to the <code>pd.merge</code> function that I spoke about in my last post: it horizontally combines the two tables on a shared column (in this case, the FIPS 10-4 code in <code>countries</code> along with the first two characters of the station ID as in <code>temps</code>). The <code>LEFT</code> part means that, even if a country code is not present in <code>countries</code> for a given row in <code>temps</code> (the latter is seen as the “left” table since we call it first in our query), we will still keep the observation with <code>NaN</code> values for the country name (unlikely to happen but just in case).</p>
+<p>The last line of the subquery starts with <code>WHERE</code> and behaves similarly to logical subsetting of a <code>pandas</code> frame. We specify that we want the name of the country to be the one specified by the user, and that the year should lie between the two values specified by the user (<code>BETWEEN</code> is, by default, inclusive), and finally, it should match the month that the user provides.</p>
+<p>Thus, the joined tables of the subquery make a table that has both temperature and country information in one table. Our main query operates on this table (which is named <code>t1</code>). Once again, we perform a join (but this time an <code>INNER JOIN</code>, which requires valid values to be present in both tables) on the <code>ID</code> columns of both <code>stations</code> and <code>t1</code> (note that the <code>AS</code> keyword allows us to abbreviate our table names, hence <code>S</code> represents <code>stations</code>). This allows us to combine the data about the station with those of the countries and temperatures (which we already had). From this final combined table, we <code>SELECT</code> the variables specified on the first line of the query.</p>
+<p>The code block below queries the database for all temperature measurements/station information taken in India between 1993 and 2000 for the month of March (3).</p>
+<div id="5b192475" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>query_climate_database(<span class="st">'climate.db'</span>,<span class="st">'India'</span>,<span class="dv">1993</span>,<span class="dv">2000</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">NAME</th>
+<th data-quarto-table-cell-role="th">LATITUDE</th>
+<th data-quarto-table-cell-role="th">LONGITUDE</th>
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">Temp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1993</td>
+<td>3</td>
+<td>29.88</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1994</td>
+<td>3</td>
+<td>30.70</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1995</td>
+<td>3</td>
+<td>30.81</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1996</td>
+<td>3</td>
+<td>29.94</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>PBO_ANANTAPUR</td>
+<td>14.583</td>
+<td>77.633</td>
+<td>India</td>
+<td>1997</td>
+<td>3</td>
+<td>29.35</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">580</td>
+<td>ALLAHABAD_BAMHRAULI</td>
+<td>25.500</td>
+<td>81.900</td>
+<td>India</td>
+<td>1999</td>
+<td>3</td>
+<td>25.52</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">581</td>
+<td>ALLAHABAD_BAMHRAULI</td>
+<td>25.500</td>
+<td>81.900</td>
+<td>India</td>
+<td>2000</td>
+<td>3</td>
+<td>24.22</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">582</td>
+<td>DARJEELING</td>
+<td>27.050</td>
+<td>88.270</td>
+<td>India</td>
+<td>1994</td>
+<td>3</td>
+<td>11.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">583</td>
+<td>DARJEELING</td>
+<td>27.050</td>
+<td>88.270</td>
+<td>India</td>
+<td>1996</td>
+<td>3</td>
+<td>11.50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">584</td>
+<td>DARJEELING</td>
+<td>27.050</td>
+<td>88.270</td>
+<td>India</td>
+<td>1997</td>
+<td>3</td>
+<td>10.70</td>
+</tr>
+</tbody>
+</table>
+
+<p>585 rows × 7 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="part-3-plotting" class="level1">
+<h1>Part 3: Plotting</h1>
+<p>How do we proceed from here? We will encompass the rest of the process in a function (in fact, the query will occur within a function), but to do so, there are two main ideas that we have to tackle:</p>
+<ol type="1">
+<li>Manipulate the data frame to get the information we want from it.</li>
+<li>Actually plot the graph.</li>
+</ol>
+<p>We will deal with both within the same function: <code>temperature_coefficient_plot</code>.</p>
+<p>Before showing you the function, I will give you an overview of how it works:</p>
+<section id="part-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-1">Part 1</h3>
+<ul>
+<li>The inputs of the function will be the same as those of the query, plus one called <code>min_obs</code> that filters out stations that have too few observations.</li>
+<li>We call <code>query_climate_database</code> using the inputs of <code>temperature_coefficient_plot</code></li>
+<li>We filter the resulting data frame to eliminate stations for which there are fewer observations than <code>min_obs</code></li>
+<li>For each station, we find the slope of the regression line of temperature on year.</li>
+</ul>
+</section>
+<section id="part-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-2">Part 2</h3>
+<ul>
+<li>We use <code>plotly</code> to create a <code>scatter_mapbox</code>, which is a type of scatterplot that allows us to overlay points onto a map of the Earth. (This is what we need the station coordinates for in the query.)</li>
+<li>We color-code our points such that the value of the regression slope affects the color of each point.</li>
+<li>We perform any other changes necessary to make our graph look nice.</li>
+</ul>
+<p>Skip to the markdown box below the definition of <code>temperature_coefficient_plot</code> for a step-by-step walkthrough.</p>
+<div id="949544f9" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> coef(data_group):</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This function is to be used with `temperature_coefficient_plot` and calculates the coefficient term of the OLS linear</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">    regression between years and average temperatures for specified stations.</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> data_group[[<span class="st">"Year"</span>]] <span class="co"># 2 brackets because X should be a df no matter what</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> data_group[<span class="st">"Temp"</span>]   <span class="co"># 1 bracket because y should be a series</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    LR <span class="op">=</span> LinearRegression()</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    LR.fit(x, y)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">round</span>(LR.coef_[<span class="dv">0</span>],<span class="dv">4</span>) <span class="co">#Makes a function that returns the slope of the linear regression curve</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="2f689514" class="cell" data-scrolled="true" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> temperature_coefficient_plot(db_file, country, year_begin, year_end, month, min_obs, <span class="op">**</span>kwargs):</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This function uses the `query_climate_database` function to query a .db database ``db_file`` and then uses</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">    the results of the query to make a geographic scatterplot using `express` from `plotly` which displays</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">    points on a map of Earth whose color corresponds to the slope of the OLS linear regression of temperature</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">    recordings on years to get an approximation of the yearly change in temperature.</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">    The other inputs of the function are the following:</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">    ``country`: The name of the country whose weather data will be plotted.</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">    ``year_begin``: The earliest year which will be considered for the slope calculation.</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co">    ``year_end``: The final year which will be considered for the slope calculation.</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co">    ``Month``: The month during which the temperature measurement was taken, equal to the argument ``month``.</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co">    ``min_obs``: The minimum number of temperature measurements required for a station to be considered. Note that</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co">    this number should not be greater than the total number of years between ``year_begin`` and ``year_end``</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Other optional arguments to `px.scatter_mapbox` can also be passed, provided that their names are specified.</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    queried_data <span class="op">=</span> query_climate_database(db_file, country, year_begin, year_end, month)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    queried_data[<span class="st">'Name_Count'</span>] <span class="op">=</span> queried_data.groupby(<span class="st">'NAME'</span>)[<span class="st">'NAME'</span>].transform(<span class="st">'count'</span>)</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>    filtered_data <span class="op">=</span> queried_data[queried_data[<span class="st">'Name_Count'</span>] <span class="op">&gt;=</span> min_obs].drop(<span class="st">'Name_Count'</span>, axis <span class="op">=</span> <span class="dv">1</span>) <span class="co">#Remove stations with too few observations</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    coef_frame <span class="op">=</span>filtered_data.groupby(<span class="st">'NAME'</span>).<span class="bu">apply</span>(coef).reset_index().rename(columns <span class="op">=</span> {<span class="dv">0</span>:<span class="st">'Estimated Yearly Increase (°C)'</span>}) </span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>    merged_frame <span class="op">=</span> pd.merge(filtered_data,coef_frame, on <span class="op">=</span> <span class="st">'NAME'</span>, how <span class="op">=</span> <span class="st">'left'</span>) <span class="co">#Place regression coefficients in our data frame.</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>    month_dict <span class="op">=</span> {<span class="dv">1</span>:<span class="st">'January'</span>, <span class="dv">2</span>:<span class="st">'February'</span>, <span class="dv">3</span>:<span class="st">'March'</span>, <span class="dv">4</span>:<span class="st">'April'</span>, <span class="dv">5</span>:<span class="st">'May'</span>, <span class="dv">6</span>:<span class="st">'June'</span>, <span class="dv">7</span>:<span class="st">'July'</span>, <span class="dv">8</span>:<span class="st">'August'</span>, <span class="dv">9</span>:<span class="st">'September'</span>,</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">10</span>:<span class="st">'October'</span>, <span class="dv">11</span>:<span class="st">'November'</span>, <span class="dv">12</span>:<span class="st">'December'</span>}</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>    title_string <span class="op">=</span> <span class="ss">f"Estimates of Yearly Increases in Temperature in </span><span class="sc">{</span>month_dict[month]<span class="sc">}</span><span class="ss"> for Stations in </span><span class="sc">{</span>country<span class="sc">}</span><span class="ss">, years </span><span class="sc">{</span>year_begin<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>year_end<span class="sc">}</span><span class="ss">"</span> <span class="co">#Information for plot title.</span></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Below is the actual creation of the plot.</span></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> px.scatter_mapbox(merged_frame, lat <span class="op">=</span> <span class="st">"LATITUDE"</span>, lon <span class="op">=</span> <span class="st">"LONGITUDE"</span>, hover_name <span class="op">=</span> <span class="st">"NAME"</span>,</span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>                            color <span class="op">=</span> <span class="st">'Estimated Yearly Increase (°C)'</span>,color_continuous_scale<span class="op">=</span>kwargs.get(<span class="st">'color_continuous_scale'</span>, <span class="st">'plasma'</span>),</span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>                            zoom <span class="op">=</span> kwargs.get(<span class="st">'zoom'</span>, <span class="dv">2</span>), color_continuous_midpoint <span class="op">=</span> <span class="dv">0</span>, opacity <span class="op">=</span> kwargs.get(<span class="st">'opacity'</span>,<span class="fl">0.2</span>), title <span class="op">=</span> title_string)</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Settings for our plot after creation.</span></span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(mapbox_style<span class="op">=</span>kwargs.get(<span class="st">'mapbox_style'</span>, <span class="st">"open-street-map"</span>))</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(height <span class="op">=</span> kwargs.get(<span class="st">'height'</span>,<span class="dv">600</span>), width <span class="op">=</span> kwargs.get(<span class="st">'width'</span>, <span class="dv">950</span>))</span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fig</span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="part-3a-explanation-of-data-frame-filtering" class="level2">
+<h2 class="anchored" data-anchor-id="part-3a-explanation-of-data-frame-filtering">Part 3a: Explanation of Data Frame Filtering</h2>
+<p>Ignore the <code>**kwargs</code> in the header of our function–we’ll use that later to make edits to our plot. The first thing that we do in our function’s body is call the <code>query_climate_database</code> function according to the inputs given by the user. Then, using this data frame, we make a new column to our resulting data frame <code>queried_data</code> called <code>Name_Count</code> which records the number of times each station appears in the query. We do this by combining the <code>.groupby()</code> and <code>.transform()</code> methods. I explained <code>.groupby()</code> in my previous post, but <code>.transform()</code> is new. It allows us to apply a function as specified in its input (in this case, <code>count</code>) to each group. Thus, <code>.transform('count')</code> counts the number of observation in each <code>NAME</code> group. What’s special about the function <code>.transform</code>, however, is that its results will be placed as a new column within our data frame. For instance, if the station <code>PBO_ANANTAPUR</code> appears 15 different times in <code>query_climate_database</code>, each row pertaining to that station will have a value of 15 in <code>Name_Count</code>–even though the number of groups is much smaller than the total number of rows, <code>.transform()</code> allows us to preserve our data frame’s structure while still adding group-level information!</p>
+<p>The next line creates a new data frame called <code>filtered_data</code> that is essentially identical to <code>queried_data</code>, except we drop all rows where <code>Name_Count</code> is less than <code>min_obs</code>. Notice that because we were able to get <code>count</code> displayed for every row, the rows whose <code>NAME</code> appears precisely fewer than <code>min_obs</code> times will be deleted. We also drop the ‘Name_Count’ column since it will no longer be useful for us.</p>
+</section>
+<section id="part-3b-explanation-of-regression-coefficient-collection" class="level2">
+<h2 class="anchored" data-anchor-id="part-3b-explanation-of-regression-coefficient-collection">Part 3b: Explanation of Regression Coefficient Collection</h2>
+<p>The next step is by far the most complicated. Essentially, we are aiming to group each station by name and run a linear regression of <code>Temp</code> on <code>Year</code> and extract the slope of the line. To do this, we are going to use another method that allows us to use a function on part of a data frame. This time, though, we’re going to instead use a method called <code>.apply()</code> because <code>.transform()</code> only works with one column at a time, whereas <code>.apply()</code> let us work with multiple columns (something we need for a regression!). See this StackOverflow post for more details: https://stackoverflow.com/questions/27517425/whether-to-use-apply-vs-transform-on-a-group-object-to-subtract-two-columns-and.</p>
+<p>There is no function (at least that I know of) that returns the slope coefficient of a linear regression automatically, so we have to write one ourselves. This is why there is a function called <code>coef</code> above my function definition, which I took from Professor Ko with a few slight modifications. For a given <code>data_group</code> (the chunks we get out of <code>.groupby()</code>), we store the <code>Year</code> column in a data frame <code>x</code> and the <code>Temps</code> column in a series <code>y</code>. The reason <code>x</code> is a data frame is because, if you recall from PIC16A, data matrices are automatically assumed to be data frames since they can have multiple dimensions. We then create a new regression called <code>LR</code>, fit it on <code>x</code> and <code>y</code>, and return the slope of the line rounded to 4 digits (this should also be review from PIC16A).</p>
+<p>When we use <code>apply</code> on our data frame, the output of the function will, in this case, be a <code>pandas</code> Series where the index is the <code>NAME</code> of the station and the values are the coefficient correlation. Note that unlike with <code>.transform</code>, there will only be one entry per group, so we cannot simply append the column. Instead, we first convert the series into a data frame by converting the index into its own column with <code>reset_index()</code>, and then we give the column containing our coefficients an appropriate name (<code>Estimated Yearly Increase (°C)</code>).</p>
+<p>Then, we use <code>pd.merge</code> to combine our filtered query data with the coefficient data. The column that we’re looking for in common is <code>NAME</code>, and then we execute a left join, which allows us to keep rows in our filtered query data even if, somehow, it wasn’t possible to run <code>coef.</code> <code>pd.merge</code> checks each row of <code>filtered_data</code>, looks at its entry in <code>NAME</code>, finds the corresponding entry in <code>coef_frame</code>, and appends the values of <code>coef_frame</code> onto the row of <code>filtered_data</code>. This allows us to add this information onto <code>filtered_data</code> even though <code>coef_frame</code> has much fewer rows. We call the result <code>merged_frame</code>.</p>
+</section>
+<section id="part-3c-explanation-of-graphing" class="level2">
+<h2 class="anchored" data-anchor-id="part-3c-explanation-of-graphing">Part 3c: Explanation of Graphing</h2>
+<p>Now that we have our data prepared, we can actually create our plot, which will rely on <code>express</code> from <code>plotly</code> (which we imported as <code>px</code>). <code>express</code> allows us to create many different types of plots very easily, akin to <code>ggplot2</code> from R if you have any experience with that. Before actually making the plot, though, I’ve prepared its title beforehand. It is once again an f-string which allows us to specifically state the country, beginning year, and ending year for which the data was collected. Since the column <code>Month</code> is a number, however, we create a dictionary called <code>month_dict</code> that maps each numerical value of <code>Month</code> with its word equivalent, which we then place into the title.</p>
+<p>The actual command to create the plot is <code>px.scatter_mapbox</code>. <code>scatter</code> means that we’re making a scatterplot, and <code>mapbox</code> means that, instead of placing our points on, say, an x-y grid, we’re instead placing them on a map of the Earth (which is still an x-y grid but with latitude and longitude). The first argument is the name of the data frame that we’re interested in using (<code>merged_frame</code>), and the following arguments rely on the columns of <code>merged_frame</code>: <code>lat</code> and <code>lon</code> are the latitude and longitude of our points, respectively, which we were able to take from <code>stations</code>. Because <code>plotly</code> graphs are interactive, we’re allowed to see information when we hover our cursor over individual points, which is why we set <code>hover_name = 'NAME'</code>, which will let us know the station name, and the most important part, the color, is controlled by <code>'Estimated Yearly Increase (°C)'</code>.</p>
+<p>Those are actually all the necessary arguments of <code>px.scatter_mapbox</code> to get our plot working, but we can include more. <code>color_continuous_scale</code> lets us pick what sort of color scheme we want for our points. <code>zoom</code> controls how far zoomed in we are on the map when we call our function, <code>color_continuous_midpoint</code> allows us to set a ‘neutral’ value for our color scale at a certain value (0 in this case, since temperatures can either be going up or down over time), <code>opacity</code> controls how transparent the points are, and finally, <code>title</code> controls, of course, the title. Most of these arguments are of the form <code>kwargs.get(value, default)</code>. This is related to the <code>**kwargs</code> in the function header: when the function is called, any arguments in addition to those required will be placed into a dictionary called <code>kwargs</code> whose keys are the argument name and values are the value inputted for that variable. <code>kwargs.get</code> allows us to access that dictionary and input the <code>value</code> for that variable within our function. The second value, however, is simply the default that will be used if no additional input was specified by the user. For example, we have <code>opacity = kwargs.get('opacity',0.2)</code>, which will set the <code>opacity</code> value to whatever the user specified, and otherwise, will set it to 0.2.</p>
+<p>Finally, we run two more commands once we actually create our graph that alter it (via <code>update_layout</code>): one changes something called <code>mapbox_style</code>, and the other simply changes the dimensions of the plot. As for the first command, when we create our plot, you can almost think of the map as just a picture that we lay points on top of depending on some coordinates. As such, we can change the type of map in the background to whatever we want, provided that the coordinates are aligned correctly. By default, we will use one called <code>open-street-map</code>.</p>
+<p>Here’s a demonstration for India between 1980 and 2020 for the month of January:</p>
+<div id="5ec627fe" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>color_map <span class="op">=</span> px.colors.diverging.RdGy_r <span class="co"># choose a colormap</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> temperature_coefficient_plot(<span class="st">'climate.db'</span>,<span class="st">"India"</span>, <span class="dv">1980</span>, <span class="dv">2020</span>, <span class="dv">1</span>, </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>                                   min_obs <span class="op">=</span> <span class="dv">10</span>,</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                                   zoom <span class="op">=</span> <span class="dv">2</span>,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                                   mapbox_style<span class="op">=</span><span class="st">"carto-positron"</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>                                   color_continuous_scale<span class="op">=</span>color_map)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="970px" height="620" src="iframe_figures/figure_30.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>You can zoom into the map and see for yourself how temperatures have changed over the years. By hovering over the individual points, you can also see the name of each station, the latitude, longitude, and the estimated yearly temperature increase. Note that while we only specified <code>hover_name = "NAME"</code>, by default, information about the x and y coordinates (i.e., the latitude and longitude) as well as the variable used in <code>color</code> will also be displayed.</p>
+<p>If you come across this notebook, feel free to play around with the inputs of the function. You will find that, all across the world, temperatures have been increasing at an alarming rate. Here’s another example of Mexico in September:</p>
+<div id="5275098e-f36c-4b8b-9c7f-71143129faaf" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>temperature_coefficient_plot(<span class="st">'climate.db'</span>, <span class="st">'Mexico'</span>, <span class="dv">1980</span>, <span class="dv">2020</span>, <span class="dv">9</span>, min_obs <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="970px" height="620" src="iframe_figures/figure_32.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+</section>
+</section>
+<section id="part-4-more-graphs" class="level1">
+<h1>Part 4: More Graphs!</h1>
+<p>Now that you have a bit of an idea of how we can combine SQL queries using <code>sqlite</code> with <code>plotly</code>, let’s use both to make a couple more interesting data visualizations.</p>
+<section id="part-4a-changes-in-temperature-ranges" class="level2">
+<h2 class="anchored" data-anchor-id="part-4a-changes-in-temperature-ranges">Part 4a: Changes in Temperature Ranges</h2>
+<p>One of the consequences of global warming that people sometimes forget is that it doesn’t necessarily make the temperature of every single part of the earth hotter at the same time, even if average temperatures are increasing. Rather, climate change can also increase the impact of extreme weather events.</p>
+<p>As such, it would be interesting to see how the yearly range in temperature has changed over time; perhaps temperatures used to be pretty constantly mild throughout the entire year, but now, they jump to highs in the summer and lows in the winter.</p>
+<p>To find out how these have changed over the time, we’re going to create a new SQL querying function called <code>min_max_query</code> and incorporate it into a function called <code>min_max_plot</code>. <code>min_max_plot</code> will be a series of histograms that will display the range of temperature for all stations within a given country. First, I’ll show a screenshot of a sample plot, and then we’ll dive deeper into the code:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/360940494240350209/1201006240340398211/Captura_de_pantalla_2024-01-27_a_las_7.29.57_p.m..png?ex=65c83f39&amp;is=65b5ca39&amp;hm=661217a3d6dc4f517d20f2e61fbd97128d3859c4d474c35a69b1ee30b15f9ad9&amp;" class="img-fluid figure-img"></p>
+<figcaption>Min Max Image</figcaption>
+</figure>
+</div>
+<p>I’ve zoomed the picture out so that we can see the whole thing, but there are a few things that we’d like to keep in mind:</p>
+<ol type="1">
+<li>The user should be able to specify the range of time during which we track the changes.</li>
+<li>The user should also be able to specify how many graphs they would like to see.</li>
+<li>Additional information (such as the number of observations and the median range) should also be displayed for ease of viewing.</li>
+</ol>
+<p>Therefore, our SQL query should include sufficient information about our country of interest, the date range, and the temperatures. While this wasn’t covered in class, SQL also has <code>MAX()</code> and <code>MIN()</code> functions (which I learned about for my internship, so we can get this part of the work cut out for us in the SQL query. Below I show the code for <code>min_max_query</code>:</p>
+<div id="78b3fd33-4986-4083-a90a-5151c51b5b23" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> climate_database <span class="im">import</span> min_max_query</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> inspect</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(min_max_query))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>def min_max_query(db_file, country, year_begin, year_end):
+    """
+    This function uses `sqlite3` to query a .db database ``db_file`` for temperature data in ``country`` between
+    the years of ``year_begin`` and ``year_end`` (inclusive).
+    The output is a `pandas` data frame ``df`` which contains the following columns:
+    ``NAME``: The name of the weather station where the temperature was measured.
+     ``Year``: The year during which the measurement was taken, will be between ``year_begin`` and ``year_end``, inclusive.
+     ``temp_max``: The maximum temperature during a specific year at a given station.
+     ``temp_min``: The minimum temperature during a specific year at a given station.
+    """
+    with sqlite3.connect(f"{db_file}") as conn:
+
+        cmd = \
+        f"""
+        SELECT t2.NAME, t2.Year, MAX(Temp) AS temp_max, MIN(Temp) AS temp_min FROM
+        (SELECT S.NAME, t1.Name AS Country, t1.Year, t1.Temp
+        FROM stations S
+        INNER JOIN
+        (SELECT T.ID, T.Year, T.Temp, C.Name
+        FROM temps T
+        LEFT JOIN countries C ON SUBSTRING(T.ID,1,2) = C."FIPS 10-4"
+        WHERE C.Name = "{country}" AND T.Year BETWEEN {year_begin} AND {year_end})
+        AS t1 ON S.ID = t1.ID) as t2
+        GROUP BY NAME, Year
+        """
+
+        df = pd.read_sql_query(cmd, conn)
+
+        return df
+</code></pre>
+</div>
+</div>
+<p>The basic structure is identical to that of <code>query_climate_database</code>, so let’s just focus on what exactly is going on in the query itself. We see once again that we use subquerying, but here, we have two subqueries. The innermost one joins the <code>temps</code> and <code>countries</code> tables, almost identically to the subqery of <code>query_climate_database</code>, with less restrictive <code>WHERE</code> conditions since we don’t need to restrict to a certain month (that would defeat the purpose of getting a yearly range). The output of this first query is called <code>t1</code>. The second subquery then joins <code>t1</code> with <code>stations</code>, giving us the station name, and joining where the <code>ID</code>s are equivalent (just as in <code>query_climate_database)</code>. This second result is saved as <code>t2</code>.</p>
+<p>Finally, from <code>t2</code> we grab <code>NAME</code>, <code>Year</code>, as well as <code>MAX(TEMP)</code> and <code>MIN(TEMP)</code> (which have slightly prettier names). This does not grab the maximum and minimum temperatures for all of <code>t2</code>, however. Just like with <code>pandas</code> data frames, we can use <code>GROUP BY</code> statements in SQL, but they go at the very end of a query. Here, we group by <code>NAME, Year</code>, which means that we group by every possible name-year combination (i.e., grouping two-dimensionally). This allows us to get the maximum and minimum temperatures for a specific station in a specific year, separate from all other max/min temperatures for that same station in a different year.</p>
+<p>Now we need to make the actual plotting function. Skip to the code block below the function body to see the explanation. Once again, I define some helper functions that we will with <code>transform</code> as well.</p>
+<div id="ccc6964c-1125-4840-b1af-54cae07ca0cb" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> min_max_plot(db_file, country, year_begin, year_end, graph_num):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This function creates a series of ``graph_num`` stacked histograms displaying the range of temperatures measured at stations</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">    in ``country`` between ``year_begin`` and ``year_end``, inclusive. It obtains the data using `sqlite3` via the</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">    `min_max_query` function to query a `.db` database file ``db_file`` to obtain the maximum and minimum temperatures</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">    at weather stations.</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="co">    The function manipulates the resulting data frame to calculate the temperature range at all stations for all valid years.</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co">    It then calculates the years for which graphs will be shown via linear interpolation between ``year_begin`` and ``year_end``,</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="co">    with non-integer years being rounded to the nearest integer.</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co">    The plot, made using `plotly express` displays the histograms along with a dotted line showing the median temperature range</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co">    and with annotations indicating the median value as well as the number of observations in the given year.</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    queried_data <span class="op">=</span> min_max_query(db_file, country, year_begin, year_end) <span class="co">#Run the query</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    queried_data[<span class="st">"Hi-Low Difference"</span>] <span class="op">=</span> queried_data[<span class="st">"temp_max"</span>] <span class="op">-</span> queried_data[<span class="st">"temp_min"</span>] <span class="co">#Calculate the differnece</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    slope <span class="op">=</span> (year_end<span class="op">-</span>year_begin)<span class="op">/</span>(graph_num <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>    intercept <span class="op">=</span> year_begin <span class="op">-</span> slope</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>    year_list <span class="op">=</span> []</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(graph_num):</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>        year_list.append(<span class="bu">round</span>(intercept<span class="op">+</span>slope<span class="op">*</span>(i<span class="op">+</span><span class="dv">1</span>),<span class="dv">0</span>)) <span class="co">#Obtain the years required for the graphs</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>    filtered_query <span class="op">=</span> queried_data[queried_data[<span class="st">'Year'</span>].isin(year_list)].sort_values(<span class="st">'Year'</span>) <span class="co">#Filter to specified years</span></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>    title_string <span class="op">=</span> <span class="ss">f"Distribution of Yearly Temperature Ranges (°C) for Stations in </span><span class="sc">{</span>country<span class="sc">}</span><span class="ss"> between </span><span class="sc">{</span>year_begin<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>year_end<span class="sc">}</span><span class="ss"> (Median in Red)"</span></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> px.histogram(filtered_query, x<span class="op">=</span><span class="st">'Hi-Low Difference'</span>, opacity <span class="op">=</span> <span class="fl">0.5</span>, nbins <span class="op">=</span> <span class="dv">25</span>,</span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>                       facet_row <span class="op">=</span> <span class="st">"Year"</span>, title <span class="op">=</span> title_string) <span class="co">#Create graph</span></span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a>    fig.update_yaxes(title_text<span class="op">=</span><span class="st">'Occurrences'</span>) <span class="co">#Change facet titles</span></span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a>    median_values <span class="op">=</span> filtered_query.groupby(<span class="st">'Year'</span>)[<span class="st">'Hi-Low Difference'</span>].median()[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a>    counts <span class="op">=</span> <span class="bu">list</span>(filtered_query.groupby(<span class="st">'Year'</span>).count()[<span class="st">'NAME'</span>])[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a>    y_cord <span class="op">=</span> np.median(counts) <span class="co">#Collect medians and observation numbers</span></span>
+<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row_num, median_value <span class="kw">in</span> <span class="bu">enumerate</span>(median_values): <span class="co">#(Over all facets)</span></span>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a>        fig.add_vline(x<span class="op">=</span>median_value, line_dash<span class="op">=</span><span class="st">'dash'</span>, line_color<span class="op">=</span><span class="st">'red'</span>, col<span class="op">=</span><span class="dv">1</span>, row<span class="op">=</span>row_num<span class="op">+</span><span class="dv">1</span>) <span class="co">#Add line signaling median</span></span>
+<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a>        fig.add_annotation(xref<span class="op">=</span><span class="st">'paper'</span>, yref<span class="op">=</span><span class="st">'paper'</span>, x<span class="op">=</span><span class="fl">0.5</span>, y<span class="op">=</span>y_cord<span class="op">/</span><span class="dv">8</span>, <span class="co">#Add number of observations</span></span>
+<span id="cb39-39"><a href="#cb39-39" aria-hidden="true" tabindex="-1"></a>                       text<span class="op">=</span><span class="ss">f"(n = </span><span class="sc">{</span>counts[row_num]<span class="sc">}</span><span class="ss">)"</span>, showarrow<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb39-40"><a href="#cb39-40" aria-hidden="true" tabindex="-1"></a>                       col<span class="op">=</span><span class="dv">1</span>, row<span class="op">=</span>row_num<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb39-41"><a href="#cb39-41" aria-hidden="true" tabindex="-1"></a>        fig.add_annotation(xref<span class="op">=</span><span class="st">'paper'</span>, yref<span class="op">=</span><span class="st">'paper'</span>, x<span class="op">=</span><span class="fl">0.5</span>, y<span class="op">=</span>y_cord<span class="op">/</span><span class="dv">4</span>, <span class="co">#Add median value</span></span>
+<span id="cb39-42"><a href="#cb39-42" aria-hidden="true" tabindex="-1"></a>                       text<span class="op">=</span><span class="ss">f"Median: </span><span class="sc">{</span><span class="bu">round</span>(median_value,<span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>, showarrow<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a>                       col<span class="op">=</span><span class="dv">1</span>, row<span class="op">=</span>row_num<span class="op">+</span><span class="dv">1</span>, font <span class="op">=</span> {<span class="st">'color'</span>:<span class="st">'red'</span>})</span>
+<span id="cb39-44"><a href="#cb39-44" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(height <span class="op">=</span> <span class="dv">1000</span>)</span>
+<span id="cb39-45"><a href="#cb39-45" aria-hidden="true" tabindex="-1"></a>    fig.update_traces(marker_line_width<span class="op">=</span><span class="dv">1</span>, marker_line_color<span class="op">=</span><span class="st">'black'</span>) <span class="co">#Add border to graph</span></span>
+<span id="cb39-46"><a href="#cb39-46" aria-hidden="true" tabindex="-1"></a>    fig.show()</span>
+<span id="cb39-47"><a href="#cb39-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> filtered_query <span class="co">#Also return data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There’s a lot of code, so let’s digest it bit by bit.</p>
+<section id="part-4ai-data-frame-manipulation" class="level3">
+<h3 class="anchored" data-anchor-id="part-4ai-data-frame-manipulation">Part 4a(i): Data Frame Manipulation</h3>
+<p>Our first order of business is to create a new column, which we name <code>Hi-Low Difference</code> that contains the difference between the highest and lowest temperatures recorded in a given year. We then create variables called <code>slope</code> and <code>intercept</code> which will help us figure out what years we want to include in our final plot; remember, we want to include <code>graph_num</code> graphs between <code>year_begin</code> and <code>year_end</code>, so we only need to keep data corresponding to so many years.</p>
+<p>I decided to make this in the form of a linear function to make it more easily visualized. Suppose, for instance, that <code>year_begin = 1980</code>, <code>year_end = 2014</code>, and <code>graph_num = 6</code>. If we can imagine graph 1 (input) corresponding to 1980 (output) and graph 6 to 2014, the slope of the line connecting <span class="math inline">\((1,1980)\)</span> to <span class="math inline">\((6,2014)\)</span> is precisely <span class="math inline">\(\frac{2014-1980}{6-1} = \frac{{end}-{begin}}{num-1}\)</span>. So, if graph 1 corresponds to 1980, we need that the output for 1 is 1980, so we have <span class="math inline">\(1980 = slope\cdot(1)+intercept \Rightarrow intercept = 1980-slope \Rightarrow intercept = begin - slope\)</span></p>
+<p>Then, we have a list called <code>year_list</code> which will contain the list of years that we need. We create a for loop that iterates over the number of necessary graphs and obtains the output of the linear equation above for different numbered graphs. We then round the output to the nearest whole number. This is because there is no guarantee that we will be able to fit a whole number of graphs between <code>year_begin</code> and <code>year_end</code>. The result of this, of course, is that the graphs will not be completely evenly spaced, but in that case, we would simply have no choice.</p>
+<p>We then make a new data frame called <code>filtered_query</code> that selects only the rows such that the year is included within <code>year_list</code>. For this, we use the <code>.isin()</code> method, and furthermore, I sort my data frame using <code>sort_values</code> by year because, otherwise, the faceted graphs do not end up in chronological order.</p>
+</section>
+<section id="part-4aii-plot-creation" class="level3">
+<h3 class="anchored" data-anchor-id="part-4aii-plot-creation">Part 4a(ii): Plot Creation</h3>
+<p>We once again create a title string and then call a <code>px</code> function, this time <code>histogram</code>, which creates a bar graph that shows the frequencies of a certain variable. The variable in question, <code>Hi-Low Differnece</code> is placed along the horizontal axis, which is why we place it into the argument <code>x</code> (if you use <code>y</code>, you can have a histogram that sticks out horizontally!). I specify that the number of bins should be 25 (that looked good while testing). Then, I introduce <code>facet_row = year</code>. Recall that a facet in this context can be thought of like a subplot from <code>matplotlib</code>. Essentially, we are duplicating a graph with the same characteristics, except for the fact that it should be limited to a certain year. Note that by specifying the argument as <code>facet_row</code> and not <code>facet_column</code>, the histograms are stacked vertically.</p>
+</section>
+<section id="part-4aiii-plot-customization" class="level3">
+<h3 class="anchored" data-anchor-id="part-4aiii-plot-customization">Part 4a(iii): Plot Customization</h3>
+<p>I had to look up the documentation for a lot of the functions and methods we use in this part since we didn’t look too deeply into facets and histograms in lecture. The first thing we do is call a method called <code>update_yaxes</code> which lets us change the name of the y-axis label for the histogram. The default label is simply “count”, which, while standard, isn’t the most clarifying. We then create a list of the medians and the number of occurrences for each histogram by taking <code>filtered_query</code>, grouping it by year, and then using the <code>.median()</code> and <code>.count()</code> (should be review from PIC16A). We also create a variable called <code>y_cord</code> and set it to the median (unrelated to the above use of <code>.median()</code>) of <code>counts</code>, which I’ll go into more detail about when we add more labels to our plot.</p>
+<p>Then we use a for loop which allows us to iterate over all facets. Specifically, we use <code>enumerate</code> on <code>median_values</code> so that we have direct access to both the medians of each facet while also having an index <code>i</code>. From here, we use two different methods on <code>fig</code>: <code>add_vline</code> and <code>add_annotation</code>. I was familiar with very similar functions from <code>ggplot2()</code> in R, so I’m glad to see that something similar exists in Python. <code>.add_vline</code> places a vertical line in a graph of a specified shape (dashed in our case) and color (red) at a specific <code>x</code> coordiante, which I place exactly at the median, since the point of the dotted line is to see where the median is. Notice that arguments <code>row</code> and <code>col</code> are also included, which correspond to the “coordinates” of the facet, as it were (similar to using <code>ax[i,j]</code> with <code>matplotlib</code> subplots). It is worth noting that this indexing starts from 1, not 0. Also, even though there is only one column of graphs, the code will not compile unless a row is specified as well, hence why <code>row</code> is set equal to 1.</p>
+<p><code>add_annotation</code> is used for placing text on top of the plot. The first two arguments, <code>xref</code> and <code>yref</code> have to do with the positioning of the text. If the argument is set to <code>paper</code> like it is in our case, the subsequent inputs for <code>x</code> and <code>y</code> will be based on their positioning within the <em>space of the graph</em> whereas if they are set to <code>'x'</code> and <code>'y'</code>, respectively, the positioning will be based on the raw data values. For our purposes, it doesn’t really matter since the facets have the same coordinates throughout with zero on the left. See the documentation here for more information: https://plotly.com/python-api-reference/generated/plotly.graph_objects.Figure.html</p>
+<p>The <code>x</code> values of both pieces of text are set to 0.5 to keep it towards the left-hand side (and roughly out of the way). The <code>y</code> values, however, depend on <code>y_cord</code> (recall that this is the median of <code>counts</code>). This is because the relative position of the text to the height of the histogram bars might change depending on the country since some have more observations than others. Thus, this keeps the text in relatively the same place no matter what. <code>text</code> contains the raw text itself, and in this case, is the number of observations and the median, respectively (using f-strings once again). In both cases, <code>showArrow</code> is set to <code>False</code>. Were this to be instead <code>True</code>, there would be a small black line on the plot pointing to the text, which we don’t want in our case. We once again specify <code>row</code> and <code>column</code> to align with our facets, and finally, we set the color of our median text to be red. This has to be done through an argument called <code>font</code>, which is a dictionary. I didn’t look up what all the other possible keys are, but I imagine that the color is just one of them (maybe others are the size, font itself, etc.)</p>
+<p>Then, I change the height using <code>update_layout</code> (otherwise the plots become too squished together), and finally, <code>.update_traces</code> allows us to put borders on the edges of our histogram bars. If I get rid of it, the black borders that are visible disappear, and I think that the graph looks uglier that way.</p>
+<p>The program finishes by showing the plot and also by returning <code>filtered_query</code> as a data frame, in case the user wants to inspect the source of the data further.</p>
+<p>So, how how has the yearly temperature range changed with time? Here are a few examples from a few different countries:</p>
+<div id="5553b322-0808-418d-adef-bf43cb9c75a1" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>min_max_1 <span class="op">=</span> min_max_plot(<span class="st">"climate.db"</span>, <span class="st">"India"</span>, <span class="dv">1960</span>, <span class="dv">2020</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="1020" src="iframe_figures/figure_35.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<div id="a7b69db2-a575-434a-99d3-55c3aa4e7a60" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>min_max_2 <span class="op">=</span> min_max_plot(<span class="st">"climate.db"</span>, <span class="st">"United States"</span>, <span class="dv">1960</span>, <span class="dv">2020</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="1020" src="iframe_figures/figure_36.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<div id="dcddf279-a2ba-4d50-9d77-9ee6236b9353" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>min_max_3 <span class="op">=</span> min_max_plot(<span class="st">"climate.db"</span>, <span class="st">"Russia"</span>, <span class="dv">1960</span>, <span class="dv">2020</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="1020" src="iframe_figures/figure_37.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<div id="c49b1f06-8149-4110-88b3-0efaf7db4e85" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>min_max_4 <span class="op">=</span> min_max_plot(<span class="st">"climate.db"</span>, <span class="st">"Canada"</span>, <span class="dv">1960</span>, <span class="dv">2020</span>, <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="1020" src="iframe_figures/figure_38.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>From these graphs alone, it’s hard to say whether or not there has been a significant shift in the median difference between high temperatures and low temperatures in a year in the above countries, but what all of them have in common is that the measurements in the past couple of decades seem to have lower medians than the earlier ones, which might actually suggest that temperatures are converging rather than diverging!</p>
+</section>
+</section>
+<section id="part-4b-altitude-and-temperature-changes" class="level2">
+<h2 class="anchored" data-anchor-id="part-4b-altitude-and-temperature-changes">Part 4b: Altitude and Temperature Changes</h2>
+<p>One of the variables that we have access to in the <code>stations</code> table that we haven’t used up until now is <code>STNELEV</code>: the elevation (in feet, I compared with some of the actual places) of each weather station. It is important to understand what makes certain communities more susceptible or resistant to global warming, and one factor that may be at play is elevation. From what we can guess, it would make sense that higher areas have lower temperatures, so let’s ask a more interesting question: does the year-to-year volatility in temperatures depend on elevation? How would temperatures change from one year to the next at sea level? At 1000 feet? At 2000?</p>
+<p>That’s what I want to find out, and to do this, we’re going to make one more function that allows us to visualize a plot, in particular, a scatter plot, and in order to be able to gain a conclusion from a scatter plot, we also want to see a regression output. Here’s what a final version should look like:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdn.discordapp.com/attachments/360940494240350209/1201005357246455930/Captura_de_pantalla_2024-01-27_a_las_7.26.24_p.m..png?ex=65c83e66&amp;is=65b5c966&amp;hm=223b24640f519afbcf900fdbbf0fb4face27cdd328e7dc4cfe762eaf41ee1f97&amp;" class="img-fluid figure-img"></p>
+<figcaption>Elevation Graph</figcaption>
+</figure>
+</div>
+<p>Once again, we’re going to have to write a new query function, which we’ll call <code>elevation_query</code>, especially because we’re using a variable that we haven’t used before. Then, we’ll write a function called <code>elevation_temp_plotter</code> which calls the query function. Here are the broad steps that we’re going to need:</p>
+<ul>
+<li>Write and call the query function based on user input specifying a certain <em>low</em> and <em>high</em> height at which to compare temperature data.</li>
+<li>Manipulate the data frame so that we see the absolute difference between subsequent years’ temperatures.</li>
+<li>Store the data for the regression between the temperature differences and elevation deviation so that we can add it onto our plot.</li>
+<li>Plot a faceted scatterplot using <code>plotly express</code></li>
+<li>Add the regression line.</li>
+<li>Add any other necessary features.</li>
+</ul>
+<p>Let’s start with the query function:</p>
+<div id="51a79364-f299-4b81-8d38-79fb478d4f3c" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> climate_database <span class="im">import</span> elevation_query</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> inspect</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(elevation_query))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>def elevation_query(db_file, month, year_begin, year_end, elev_below_center, elev_above_center, radius):
+    """
+    This function uses `sqlite3` to query a `.db` database file ``db_file`` and returns a data frame ``df``
+    containing the following columns:
+    ``NAME``: The name of valid weather stations. 
+    ``STNELEV``: Each station's elevation in feet. Must be within ``radius`` feet of ``elev_below_center`` or ``elev_above_center``
+    ``LATITUDE``: Each station's latitude.
+    ``LONGITUDE``: Each station's longitude.
+    ``Country``: The name of the country where the recoridng was taken.
+    ``Year``: The year when the recording was taken, between ``year_begin`` and ``year_end``, inclusive.
+    ``Month``: The month when the recording was taken, equal to ``month``.
+    ``Temp``: The temperature recording at that station at that point in time.
+    """
+    with sqlite3.connect(f"{db_file}") as conn:
+        cmd = \
+        f"""
+        SELECT S.NAME, S.STNELEV, S.LATITUDE, S.LONGITUDE, t1.Name AS Country, t1.Year, t1.Month, t1.Temp
+        FROM stations S
+        INNER JOIN
+        (SELECT T.ID, T.Year, T.Month, T.Temp, C.Name
+        FROM temps T
+        LEFT JOIN countries C ON SUBSTRING(T.ID,1,2) = C."FIPS 10-4"
+        WHERE T.Year BETWEEN {year_begin} AND {year_end} AND T.Month = {month})
+        AS t1 ON S.ID = t1.ID
+        WHERE ((S.STNELEV BETWEEN {elev_above_center-radius} AND {elev_above_center+radius}) OR (S.STNELEV BETWEEN {elev_below_center-radius} AND {elev_below_center+radius})) AND S.STNELEV != 9999
+        """
+        df = pd.read_sql_query(cmd, conn)
+        
+        return df
+</code></pre>
+</div>
+</div>
+<p>By now, you should be getting the hang of SQL queries. Our inner subquery joins <code>temps</code> onto <code>countries</code> in accordance to the range <code>year_begin</code> and <code>year_end</code>, the result of which we call <code>t1</code>. Then, we join <code>stations</code> onto <code>t1</code> using the <code>ID</code> column as we had before, but this time, we have a very long <code>WHERE</code> condition that takes advantage of f-strings once again: the elevation must be within <code>radius</code> feet of either <code>elev_above_center</code> or <code>elev_below_center</code>. These two user-inputted parameters determine the elevation at which we center our scatterplot. Of course, we also want to be able to control how far from this center our observations can be–we don’t want any overlap! That’s why we use the <code>radius</code> variable.</p>
+<p>Okay, now let’s move onto <code>elevation_temp_plotter</code> itself. This time, we’re going to be relying on 3 different helper functions, so make sure to scroll down far enough!</p>
+<div id="34eeb4bc-d05a-4237-a783-5f5b5cfb712a" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> altitude_check(group, elev_below_center, radius):</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This is a helper function to be used with `elevation_temp_plotter` and simply categorizes stations as being either</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">    'Low' or 'High' depending on their closeness to ``elev_below_center`` or ``elev_above_center``</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (np.mean(group) <span class="op">&gt;=</span> elev_below_center <span class="op">-</span> radius) <span class="kw">and</span> (np.mean(group) <span class="op">&lt;=</span> elev_below_center <span class="op">+</span> radius):</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Low'</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'High'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e5eddb51-3b45-4653-9f09-a92f0671e7d2" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> relative_height_difference(x, elev_below_center, elev_above_center):</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This is a helper function to be used with `elevation_temp_plotter` and calculates the distance between each station's</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="co">    elevation ``STNELEV`` and either `elev_below_center` or `elev_above_center`</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x[<span class="st">'Relative Height'</span>] <span class="op">==</span> <span class="st">'Low'</span>:</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x[<span class="st">'STNELEV'</span>] <span class="op">-</span> elev_below_center</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x[<span class="st">'STNELEV'</span>] <span class="op">-</span> elev_above_center</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="c4c9f9f9-349b-4364-81d3-3d60ed3192d5" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> coef_elev(data_group):</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co">    This is a helper function to be used with `elevation_temp_plotter` and returns a tuple containing `numpy` arrays that</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co">    will be used for plotting regression lines and also the regression intercept/coefficients for printing onto plots.</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> data_group[[<span class="st">"Distance from Center"</span>]] <span class="co"># 2 brackets because X should be a df no matter what</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> data_group[<span class="st">"Diff from Last"</span>]   <span class="co"># 1 bracket because y should be a series</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    LR <span class="op">=</span> LinearRegression()</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>    LR.fit(x, y)</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    reg_info <span class="op">=</span> np.array([LR.intercept_, LR.coef_[<span class="dv">0</span>]])</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    x_vals <span class="op">=</span> np.linspace(data_group[<span class="st">'Distance from Center'</span>].<span class="bu">min</span>(), data_group[<span class="st">'Distance from Center'</span>].<span class="bu">max</span>(),<span class="dv">100</span>)</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    y_vals <span class="op">=</span> LR.predict(x_vals.reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (np.column_stack((x_vals, y_vals)),reg_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="5b21c577-88df-41ae-8e87-73523a997de5" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> elevation_temp_plotter(db_file,month,year_begin,year_end,elev_below_center,elev_above_center, radius):</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co">     This function creates two scatterplots in ``plotly express`` displaying the yearly change in temperatures during ``month``</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co">    at all weather stations whose elevations are within ``radius`` feet of ``elev_below_center`` and ``elev_above_center``</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co">    in ``country`` between ``year_begin`` and ``year_end``, inclusive. It obtains the data using `sqlite3` via the</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co">    ``elevation_query`` function to query a `.db` database file ``db_file`` to obtain the relevant temperature recordings.</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co">    The function manipulates the resulting data frame to calculate the absolute value change in temperatures from one year to the next.</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co">    The function creates faceted scatterplots, each displaying data centered around ``elev_below_center`` and ``elev_above_center``</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co">    The horizontal axis does not display the altitude, but rather, distance from ``elev_below_center`` and ``elev_above_center``, respectively.</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co">    The OLS regression line for each scatterplot is also displayed with the equation printed as an annotation for each one.</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="co">    The function returns the data frame used for the plot for reference.</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="co">    This function relies on functions ``altitude_check``, ``relative_height_difference``, and ``coef_elev`` to manipulate the data frame</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="co">    and obtain regression information. It requires the `numpy` package to be installed.</span></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a>    queried_data <span class="op">=</span> elevation_query(db_file,month, year_begin<span class="op">-</span><span class="dv">1</span>, year_end, elev_below_center, elev_above_center, radius)</span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a>    queried_data[<span class="st">'Diff from Last'</span>] <span class="op">=</span> queried_data.groupby([<span class="st">'NAME'</span>, <span class="st">'LATITUDE'</span>])[<span class="st">'Temp'</span>].diff().dropna().<span class="bu">abs</span>() <span class="co">#Query and difference data.</span></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a>    queried_data[<span class="st">'Relative Height'</span>] <span class="op">=</span> queried_data.groupby([<span class="st">'NAME'</span>,<span class="st">'LATITUDE'</span>])[[<span class="st">'STNELEV'</span>]].transform(altitude_check,</span>
+<span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>                                                                                                       elev_below_center, radius)</span>
+<span id="cb49-23"><a href="#cb49-23" aria-hidden="true" tabindex="-1"></a>    queried_data[<span class="st">'Distance from Center'</span>] <span class="op">=</span> queried_data.<span class="bu">apply</span>(relative_height_difference, args <span class="op">=</span> (elev_below_center,</span>
+<span id="cb49-24"><a href="#cb49-24" aria-hidden="true" tabindex="-1"></a>                                                                                                  elev_above_center), axis <span class="op">=</span> <span class="dv">1</span>)  <span class="co">#Calculate distance from elev_below_center or elev_above_center  </span></span>
+<span id="cb49-25"><a href="#cb49-25" aria-hidden="true" tabindex="-1"></a>    coef_info <span class="op">=</span> queried_data.dropna().groupby(<span class="st">'Relative Height'</span>).<span class="bu">apply</span>(coef_elev) <span class="co">#Create necessary arrays for regression and obtain coefficient info.</span></span>
+<span id="cb49-26"><a href="#cb49-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-27"><a href="#cb49-27" aria-hidden="true" tabindex="-1"></a>    month_dict <span class="op">=</span> {<span class="dv">1</span>:<span class="st">'January'</span>, <span class="dv">2</span>:<span class="st">'February'</span>, <span class="dv">3</span>:<span class="st">'March'</span>, <span class="dv">4</span>:<span class="st">'April'</span>, <span class="dv">5</span>:<span class="st">'May'</span>, <span class="dv">6</span>:<span class="st">'June'</span>, <span class="dv">7</span>:<span class="st">'July'</span>, <span class="dv">8</span>:<span class="st">'August'</span>, <span class="dv">9</span>:<span class="st">'September'</span>, <span class="dv">10</span>:<span class="st">'October'</span>, <span class="dv">11</span>:<span class="st">'November'</span>, <span class="dv">12</span>:<span class="st">'December'</span>} <span class="co">#For month names</span></span>
+<span id="cb49-28"><a href="#cb49-28" aria-hidden="true" tabindex="-1"></a>    title_string <span class="op">=</span> <span class="ss">f"Absolute Difference From Prev. Year’s </span><span class="sc">{</span>month_dict[month]<span class="sc">}</span><span class="ss"> Temperatures (°C) for Stations at Elevations Within </span><span class="sc">{</span>elev_below_center<span class="sc">}</span><span class="ss">±</span><span class="sc">{</span>radius<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>elev_above_center<span class="sc">}</span><span class="ss">±</span><span class="sc">{</span>radius<span class="sc">}</span><span class="ss"> Feet"</span></span>
+<span id="cb49-29"><a href="#cb49-29" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Create string for title</span></span>
+<span id="cb49-30"><a href="#cb49-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb49-31"><a href="#cb49-31" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> px.scatter(queried_data, x<span class="op">=</span> <span class="st">'Distance from Center'</span>, y <span class="op">=</span> <span class="st">'Diff from Last'</span>, hover_name <span class="op">=</span> <span class="st">'NAME'</span>, hover_data <span class="op">=</span> [<span class="st">'Country'</span>,<span class="st">'LATITUDE'</span>,<span class="st">'LONGITUDE'</span>],</span>
+<span id="cb49-32"><a href="#cb49-32" aria-hidden="true" tabindex="-1"></a>                     color_discrete_sequence<span class="op">=</span>[<span class="st">'red'</span>], facet_row <span class="op">=</span> <span class="st">'Relative Height'</span>, title <span class="op">=</span> title_string) <span class="co">#Create faceted scatterplot.</span></span>
+<span id="cb49-33"><a href="#cb49-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-34"><a href="#cb49-34" aria-hidden="true" tabindex="-1"></a>    altitude_dict <span class="op">=</span> {<span class="dv">2</span>: [<span class="st">'Low'</span>,elev_below_center], <span class="dv">1</span>:[<span class="st">'High'</span>,elev_above_center]} <span class="co">#For labels in each facet</span></span>
+<span id="cb49-35"><a href="#cb49-35" aria-hidden="true" tabindex="-1"></a>    fig.update_layout(height <span class="op">=</span> <span class="dv">1000</span>)</span>
+<span id="cb49-36"><a href="#cb49-36" aria-hidden="true" tabindex="-1"></a>    fig.layout.annotations[<span class="dv">1</span>][<span class="st">'text'</span>] <span class="op">=</span> <span class="ss">f"Center = </span><span class="sc">{</span>altitude_dict[<span class="dv">2</span>][<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> (Low)"</span> <span class="co">#Change the label that indicates the facet.</span></span>
+<span id="cb49-37"><a href="#cb49-37" aria-hidden="true" tabindex="-1"></a>    fig.layout.annotations[<span class="dv">0</span>][<span class="st">'text'</span>] <span class="op">=</span> <span class="ss">f"Center = </span><span class="sc">{</span>altitude_dict[<span class="dv">1</span>][<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> (High)"</span></span>
+<span id="cb49-38"><a href="#cb49-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-39"><a href="#cb49-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key, value <span class="kw">in</span> altitude_dict.items(): <span class="co">#Add regression line and text to each plot.</span></span>
+<span id="cb49-40"><a href="#cb49-40" aria-hidden="true" tabindex="-1"></a>        fig.add_trace(px.line(x<span class="op">=</span>coef_info[value[<span class="dv">0</span>]][<span class="dv">0</span>][:,<span class="dv">0</span>], y <span class="op">=</span> coef_info[value[<span class="dv">0</span>]][<span class="dv">0</span>][:,<span class="dv">1</span>]).data[<span class="dv">0</span>], row <span class="op">=</span> key, col <span class="op">=</span> <span class="dv">1</span>)</span>
+<span id="cb49-41"><a href="#cb49-41" aria-hidden="true" tabindex="-1"></a>        fig.add_annotation(xref<span class="op">=</span><span class="st">'paper'</span>, yref<span class="op">=</span><span class="st">'paper'</span>, x<span class="op">=-</span>radius<span class="op">/</span><span class="dv">2</span>,</span>
+<span id="cb49-42"><a href="#cb49-42" aria-hidden="true" tabindex="-1"></a>                           y<span class="op">=</span><span class="fl">1.1</span><span class="op">*</span>(queried_data[queried_data[<span class="st">'Relative Height'</span>] <span class="op">==</span> value[<span class="dv">0</span>]])[<span class="st">'Diff from Last'</span>].<span class="bu">max</span>(),</span>
+<span id="cb49-43"><a href="#cb49-43" aria-hidden="true" tabindex="-1"></a>                       text<span class="op">=</span><span class="ss">f"y=</span><span class="sc">{</span><span class="bu">round</span>(coef_info[value[<span class="dv">0</span>]][<span class="dv">1</span>][<span class="dv">0</span>],<span class="dv">4</span>)<span class="sc">}{</span><span class="st">'+'</span> <span class="cf">if</span> (coef_info[value[<span class="dv">0</span>]][<span class="dv">1</span>][<span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span>) <span class="cf">else</span> <span class="st">' '</span><span class="sc">}{</span><span class="bu">round</span>(coef_info[value[<span class="dv">0</span>]][<span class="dv">1</span>][<span class="dv">1</span>],<span class="dv">4</span>)<span class="sc">}</span><span class="ss">*x"</span>, showarrow<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb49-44"><a href="#cb49-44" aria-hidden="true" tabindex="-1"></a>                       col<span class="op">=</span><span class="dv">1</span>,row <span class="op">=</span> key)</span>
+<span id="cb49-45"><a href="#cb49-45" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb49-46"><a href="#cb49-46" aria-hidden="true" tabindex="-1"></a>    fig.show()</span>
+<span id="cb49-47"><a href="#cb49-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> queried_data <span class="co">#Returns the data frame used as well.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There’s a lot going on here. Let’s take it step by step.</p>
+<section id="part-4bi-data-frame-manipulation" class="level3">
+<h3 class="anchored" data-anchor-id="part-4bi-data-frame-manipulation">Part 4b(i): Data Frame Manipulation</h3>
+<p>The first thing we do is to run our query using <code>elevation_query</code> using the variables entered through the function call, with the notable exception being the initial year is <code>year_begin -1</code>. This is because we will be differencing our data, and as such, the earliest year’s observation for each station will become an <code>NaN</code> value since it has nothing to be compared against, so we go one year back in order to obtain a valid value.</p>
+<p>Then, we make a column called <code>Diff From Last</code> which uses the <code>.diff()</code> method from <code>pandas</code> to calculate the difference in temperature between one year and the next at a given station. We take the absolute value using <code>.abs()</code> since we’re interested in overall volatility, and we make sure to drop any <code>NaN</code>s to eliminate the recordings for the year <code>year_begin -1</code>. Note that in this case, we group by both <code>NAME</code> and <code>LATITUDE</code> because we are not filtering our data by country. In fact, there are several stations that happen to have the same name but in different countries! Furthermore, we can’t group by country either since there are some stations that aren’t located in <em>any</em> country (such as in the ocean) and therefore, their country label is called <code>None</code> (there was some trial and error in figuring this out :)).</p>
+<p>Next, we create a column called <code>Relative Height</code> which employs <code>.transform()</code> to apply a function called <code>altitude_check</code> onto the <code>STNELEV</code> column, grouped by station. Note that because <code>altitude_check</code> has multiple arguments, we can actually pass these into <code>.transform()</code> itself as additional arguments. <code>altitude_check</code> inspects station group and checks whether or not the mean of the group’s height (this should be the same as each individual <code>STNELEV</code> value since the station isn’t moving) is within <code>radius</code> feet of <code>elev_below_center</code>. If it is, it sets the value of <code>Relative Height</code> to <code>'Low'</code>, and otherwise, the station must be within <code>radius</code> feet of <code>elev_above_center</code>, so we assign these rows <code>'High'</code>.</p>
+<p>We then use <code>Relative Height</code> via <code>.apply()</code> to create a column called <code>Distance from Center</code>. Once again, we use <code>.apply()</code> here and not <code>.transform()</code> because we need information from multiple columns. Here we once again do a simple logical check: if <code>Relative Height</code> is <code>'Low'</code>, then we simply take the station’s elevation and subtract <code>elev_below_center</code>, which will give us the signed difference in elevation between the station and the center. If all works well, <code>Distance form Center</code> should be within <code>-radius</code> and <code>radius</code>.</p>
+</section>
+<section id="part-4bii-regression-information" class="level3">
+<h3 class="anchored" data-anchor-id="part-4bii-regression-information">Part 4b(ii): Regression Information</h3>
+<p>We then create an object (a tuple, actually) called <code>coef_info</code> that is <em>not</em> stored in <code>queried_data</code>, but rather, is kept separate. We use <code>.apply</code> again on a function called <code>coef_elev</code> so that we can have a customizable output, where our two groups are the <code>'Low'</code> and <code>'High'</code> values of <code>Relative Height</code>. We do it this way so that we can make a different regression for each group, which will translate nicely onto our faceted plot.</p>
+<p><code>coef_elev</code> is the most complex helper function that we’ve made for this post, but at its core, it’s quite similar to the <code>coef</code> function that we used for the first data visualization that we made. We’re going to want to be comparing the <code>Distance from Center</code> column to <code>Diff from Last</code> so that we can see how a one unit change in elevation (centered at either <code>elev_below_center</code> or <code>elev_above_center</code>) is related to the volatility in temperatures. We create a linear regression object <code>LR</code> and fit it to our data matrices, and in order to actually make something that we can graph, recall how we can use <code>np.linspace()</code> and <code>.predict()</code> to create x and y values that we can plot.</p>
+<p>The function returns a single numpy array containing both the x and y values as well as the intercept/coefficient information of the regression, which we’ll use when created annotations on our graph to write our equation.</p>
+</section>
+<section id="part-4biii-plotting-and-initial-changes" class="level3">
+<h3 class="anchored" data-anchor-id="part-4biii-plotting-and-initial-changes">Part 4b(iii): Plotting and Initial Changes</h3>
+<p>Now comes the actual plotting. First we create a dictionary <code>month_dict</code> which, as it did in our original plot, will allow us to display month names in <code>title_string</code>, which is an adequately labeled f-string.</p>
+<p>Then we call <code>px.scatter</code> where we use <code>queried_data</code> as our source and our relevant <code>x</code> and <code>y</code> values. We also make it so that the user can hover over individual observations and see, in large text, the name of the station (<code>hover_name = 'NAME'</code>) and also see secondary information about the country, latitude, and longitude of the station (<code>hover_data = ['Country', 'LATITUDE', 'LONGITUDE']</code>). We make the points all red using <code>color_discrete_sequence</code> (which allows us to select a discrete set of colors rather than using a spectrum) because the regression line is going to be, by default, blue. We make the facet rows <code>Relative Height</code>, which will separate the points into a <code>'Low'</code> and <code>'High'</code> scatterplot, and finally, we add our title.</p>
+<p>Then, once the graph is created, we first increase the height, and then we create a dictionary called <code>altitude_dict</code> whose keys are 2 and 1, and whose values are a list containing the words <code>'Low'</code> or <code>'High'</code> and <code>elev_below_center</code> or <code>elev_above_center</code>. It will become apparent why we do this when we apply facet specific changes. But first, we call <code>fig.layout.annotations</code> which allows us to change the label on the right-hand side that indicates what detemrines our facets. The 0th annotation will be for the <code>High</code> graph (which is on the bottom), and we clarify where the center referenced in ‘Distance from Center’ (i.e., <code>elev_below_center</code> or <code>elev_above_center</code>) is, and likewise, the 1st will be for the <code>Low</code> graph (which is on top). The reason I do not do this in the body of the for loop below is because editing <code>layout.annotations</code> seems to affect <em>all</em> annotations on the graph, so I ordered it in this particular way because, otherwise, the equations that we print on our graph would also be affected by this.</p>
+</section>
+<section id="part-4biv-facet-specific-changes" class="level3">
+<h3 class="anchored" data-anchor-id="part-4biv-facet-specific-changes">Part 4b(iv): Facet-Specific Changes</h3>
+<p>The last large step is to make a for loop which will help us add the regression line and equation information onto the graph. Once again, I had to look up the documentation for this as while I had done something similar in R’s <code>ggplot2</code>, I had no idea how to do this for <code>plotly</code>. See this link and search for <code>add_trace</code> for a similar example: https://plotly.com/python/creating-and-updating-figures/</p>
+<p>I create a for loop over the dictionary that we created earlier which will allow us to simultaneously keep an index for the facet rows (<code>key</code>) as well as pertinent information (<code>value</code>). Recall that <code>altitude_dict</code> is the following:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>altitude_dict <span class="op">=</span> {<span class="dv">2</span>: [<span class="st">'Low'</span>,elev_below_center], <span class="dv">1</span>:[<span class="st">'High'</span>,elev_above_center]}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alright. We start by using <code>.add_trace</code> on our figure, which essentially allows us to print other objects on top of our existing graph (<code>geoms</code> in <code>ggplot2</code> if you’re familiar), and the trace that we want to add is a line, which I found out that you can create using <code>px.line</code> (https://plotly.com/python-api-reference/generated/plotly.express.line). The syntax is pretty simple (see row above), though. For the <code>x</code> values, we look in <code>coef_info</code>. It’s worth inspecting the output of <code>coef_info</code> first to see why this actually works:</p>
+<div id="a948b181-b502-40e6-ab76-61857c9913d8" class="cell" data-scrolled="true" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>db_file <span class="op">=</span> <span class="st">'climate.db'</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>month <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>year_begin <span class="op">=</span> <span class="dv">2015</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>year_end <span class="op">=</span> <span class="dv">2020</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>elev_below_center <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>elev_above_center <span class="op">=</span> <span class="dv">2000</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>radius <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>queried_data <span class="op">=</span> elevation_query(db_file,month, year_begin, year_end, elev_below_center, elev_above_center, radius)</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>queried_data[<span class="st">'Diff from Last'</span>] <span class="op">=</span> queried_data.groupby([<span class="st">'NAME'</span>, <span class="st">'LATITUDE'</span>])[<span class="st">'Temp'</span>].diff().dropna().<span class="bu">abs</span>() <span class="co">#Query and difference data.  </span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>queried_data[<span class="st">'Relative Height'</span>] <span class="op">=</span> queried_data.groupby([<span class="st">'NAME'</span>,<span class="st">'LATITUDE'</span>])[[<span class="st">'STNELEV'</span>]].transform(altitude_check, elev_below_center, radius)</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>queried_data[<span class="st">'Distance from Center'</span>] <span class="op">=</span> queried_data.<span class="bu">apply</span>(relative_height_difference, args <span class="op">=</span> (elev_below_center, elev_above_center), axis <span class="op">=</span> <span class="dv">1</span>)  <span class="co">#Calculate distance from elev_below_center or elev_above_center  </span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>coef_info <span class="op">=</span> queried_data.dropna().groupby(<span class="st">'Relative Height'</span>).<span class="bu">apply</span>(coef_elev)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coef_info, coef_info[<span class="st">'High'</span>][<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Relative Height
+High    ([[-198.5999999999999, 1.8781317057391695], [-...
+Low     ([[-59.1, 1.4440271474376656], [-56.4828282828...
+dtype: object [ 1.87803968e+00 -4.63365829e-07]</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/ziongassner/anaconda3/lib/python3.11/site-packages/sklearn/base.py:439: UserWarning:
+
+X does not have valid feature names, but LinearRegression was fitted with feature names
+
+/Users/ziongassner/anaconda3/lib/python3.11/site-packages/sklearn/base.py:439: UserWarning:
+
+X does not have valid feature names, but LinearRegression was fitted with feature names
+</code></pre>
+</div>
+</div>
+<p>We see that the output of <code>coef_info</code> is sorted into the two groups <code>High</code> and <code>Low</code>, which is why we’re able to acccess the information regarding individual regressions using <code>value[0]</code> as it returns either of those exact keywords. Furthermore, because of the structure of our <code>numpy</code> array stored in <code>coef_info</code>, we’re capable of extracting the x and y coordinates using the standard subsetting operator. This is all we need for <code>px.line</code>, but before being able to add it as a trace, we need to append <code>.data[0]</code> to the end of <code>px.line</code> because otherwise, we’re actually going to be trying to grab the entirety of the <code>line</code> object and pass it to <code>add_trace</code>, when we only need the values contained within it. Finally, we can specify our row with <code>key</code> and column as 1 (recall that both are required even for one-dimensional faceting). Note that we use values 2 and 1 for <code>key</code> because we start by plotting the <code>Low</code> values on top (row 2) and then the <code>High</code> values below (row 1). This indexing does <em>not</em> start at zero! (This also took a lot of trial and error :( ).</p>
+<p>Once we’ve added the line, though, all that’s left is the equation as text. We once again set <code>xref</code> and <code>yref</code> to paper as in the case of the histsograms, and we set <code>x</code> equal to <code>-radius/2</code>, which should ideally keep it at the 25th percentile of the chart. The height will have to depend on the distribution of the points–if some are extremely high up, there’s a chance that they might block the text. As such, we find the maximum value of <code>Diff from Last</code> for our particular group and add an extra 10 percent for good measure.</p>
+<p>The text for the annotation looks complicated, but it’s mostly syntax that’s getting in the way. Our equation will be of the form <span class="math inline">\(y = b_1+b_2x\)</span>. <span class="math inline">\(b_1\)</span> is simply the intercept term which we can find within the second item (1st index) of <code>coef_info</code> for our particular group as the item in the 0th index (hence the <code>[1][0]</code>), which is then rounded to 4 decimal places for ease of viewing. Adding the slope is a bit tricky because we don’t want to put a plus sign if the slope is a negative number since the minus sign will be printed by default, so we use Python’s ternary operator to print a plus sign if and only if the slope term (the item with the 1st index in the coefficient information part of <code>coef_info</code>), otherwise, we just leave it blank and let the minus sign of the coefficient take care of it. After this, we add the coefficient itself multiplied by <code>x</code>. Once again, we set <code>showArrow = False</code> to avoid creating any distractions for our labels, and we make sure to specify the right column and row using <code>key</code>.</p>
+<p>And then we’re done! We show the figure and also return <code>queried_data</code> if the user is interested in seeing the data up close.</p>
+<p>So, what can we conclude from this? Let’s look at data from 1980 till 2020 for a few different months, and looking at 200 feet within sea level and 2000 feet:</p>
+<div id="02da800c-b970-4ca9-a3f5-29bd2d90accf" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>plot_1 <span class="op">=</span> elevation_temp_plotter(<span class="st">'climate.db'</span>, <span class="dv">4</span>, <span class="dv">1980</span>, <span class="dv">2020</span>, <span class="dv">0</span>, <span class="dv">2000</span>, <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/ziongassner/anaconda3/lib/python3.11/site-packages/sklearn/base.py:439: UserWarning:
+
+X does not have valid feature names, but LinearRegression was fitted with feature names
+
+/Users/ziongassner/anaconda3/lib/python3.11/site-packages/sklearn/base.py:439: UserWarning:
+
+X does not have valid feature names, but LinearRegression was fitted with feature names
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="1020" src="iframe_figures/figure_48.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<div id="1200b156-eb30-4b06-9abd-761edd266ce9" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>plot_2 <span class="op">=</span> elevation_temp_plotter(<span class="st">'climate.db'</span>, <span class="dv">8</span>, <span class="dv">1980</span>, <span class="dv">2020</span>, <span class="dv">0</span>, <span class="dv">2000</span>, <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/ziongassner/anaconda3/lib/python3.11/site-packages/sklearn/base.py:439: UserWarning:
+
+X does not have valid feature names, but LinearRegression was fitted with feature names
+
+/Users/ziongassner/anaconda3/lib/python3.11/site-packages/sklearn/base.py:439: UserWarning:
+
+X does not have valid feature names, but LinearRegression was fitted with feature names
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="1020" src="iframe_figures/figure_49.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<div id="f6e1ac29-893d-4241-b545-e5a31bb1d197" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plot_3 <span class="op">=</span> elevation_temp_plotter(<span class="st">'climate.db'</span>, <span class="dv">8</span>, <span class="dv">1980</span>, <span class="dv">2020</span>, <span class="dv">0</span>, <span class="dv">2000</span>, <span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/Users/ziongassner/anaconda3/lib/python3.11/site-packages/sklearn/base.py:439: UserWarning:
+
+X does not have valid feature names, but LinearRegression was fitted with feature names
+
+/Users/ziongassner/anaconda3/lib/python3.11/site-packages/sklearn/base.py:439: UserWarning:
+
+X does not have valid feature names, but LinearRegression was fitted with feature names
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="1020" src="iframe_figures/figure_50.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>In all three cases, the interesting part is that the y-intercept term increase between the Low and High altitudes, but the slope decreases. This suggests that elevation might actually have a positive relationship with temperature volatility (since the intercept term for the second graph encapsulates the effect of the first ~1800 feet and because the slope starts out positive), but the effect of higher altitudes on volatility may diminish, as evidenced by the lower slopes in the second example.</p>
+</section>
+</section>
+</section>
+<section id="thanks-for-reading-my-post-3" class="level1">
+<h1>Thanks for reading my post :3</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pusheen.com/wp-content/uploads/2023/11/Capybar_Hot_Springs_GIF.gif" class="img-fluid figure-img"></p>
+<figcaption>Pusheen in the Tub</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
