@@ -230,7 +230,7 @@ window.Quarto = {
 <h1>Part 1: Databases</h1>
 <p>We’re going to be using temperature data collected by the National Oceanic and Atmospheric Administration (NOAA) that dates back to the 1960s. As a result, we’re going to be downloading, manipulating, and presenting a large quantity of information. While in PIC16A you probably worked completely within the boundaries of your Jupyter notebook to play with <code>pandas</code> data frames, real data can often take up gigabytes of space–not just in your hard drive, but also in your memory!</p>
 <p>Because of this, we’re going to need to be able to access our data in a smart, memory efficient way and break past the borders of this <code>.ipynb</code> file, and to do that, we’re going to make use of another programming language called SQL (Structured Query Language) which can create and access database files. You might be wondering how that’s possible since this is a Python notebook. The answer is that Python has a package called <code>sqlite3</code> that allows us to write and execute SQL commands using SQL syntax with a series of methods and commands. Let’s start by importing the packages we need</p>
-<div id="81bb5c42" class="cell" data-execution_count="1">
+<div id="81bb5c42" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#We'll use these later!</span></span>
@@ -265,14 +265,14 @@ window.Quarto = {
 <p>Okay, so now we actually need to populate our database with tables. To do this, we’re going to employ a method that comes with <code>pandas</code> called <code>.to_sql()</code> that allows us to turn a data frame into a SQL table within a database of our choice. First, though, we actually need to get our hands on our data. There are 3 <code>.csv</code> files that we’re interested in: one called <code>temps</code> that contains temperature data, one called <code>station-metadata.csv</code> which contains information about the weather stations where the aforementioned data was collected, and finally, one which we will call <code>countries</code>, which will allow us to identify the country (or region) in which each station is located. The first two files come from NOAA but were provided to my PIC16B class by my professor, Seyoon Ko. I would link these files, but they are behind our BruinLearn page. The last file was also provided by Professor Ko but was taken from the URL that appears in the code block below. I’m not sure who to attribute it to.</p>
 <p>(Note that, by the way, although we’re doing this because we want to avoid using too many memory-intensive operations, we’re going to have to load these files at least once into our notebook so that we can turn them into SQL tables in the first place).</p>
 <div id="717ff742" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> pd.read_csv(<span class="st">'files/temps.csv'</span>)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> pd.read_csv(<span class="st">'files/temps.csv'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>stations <span class="op">=</span> pd.read_csv(<span class="st">'files/station-metadata.csv'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>countries <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/mysociety/gaze/master/data/fips-10-4-to-iso-country-codes.csv"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#This may take a bit to run.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>While it’s tempting to immediately try to convert these 3 data frames into SQL tables, we first want to clean the data up a little bit. Let’s start with <code>temps</code>: (The following steps are taken <strong>exactly</strong> from Prof.&nbsp;Ko’s notebook)</p>
 <div id="932d8b63" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>temperatures.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
@@ -401,9 +401,9 @@ window.Quarto = {
 <p>We’ll start with the third item, since we shouldn’t worry about renaming things our changing units if we don’t even have the structure down in the first place. But how do we do this? In my previous blog post (HW 0), I briefly introduced the idea of stacking in <code>pandas</code>, and we’re going to be using that again this time.</p>
 <p>If you don’t recall, here’s the basic idea of stacking: * Specify some column(s) that will be “preserved” * The <code>.stack()</code> method will combine all other columns into one big column Let’s give this a go:</p>
 <div id="41ac7764" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> temps.set_index(keys <span class="op">=</span> [<span class="st">"ID"</span>,<span class="st">"Year"</span>])</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> temps.stack()</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> temperatures.set_index(keys <span class="op">=</span> [<span class="st">"ID"</span>,<span class="st">"Year"</span>])</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> temperatures.stack()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>temperatures.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>ID           Year        
 ACW00011604  1961  VALUE1     -89.0
@@ -418,7 +418,7 @@ dtype: float64</code></pre>
 <p>Then, the remaining columns are stacked (combine) into one “column” once we call <code>.stack()</code>. This actually turns the object into a <code>pandas</code> series. Recall from PIC16A that a series is like a generalization of a list that we can imagine as one column of a data frame. A series also has an index, which in our case, contains three different items for each numerical value (this technically makes it a <code>MultiIndex</code>): the <code>ID</code> and <code>Year</code> (which we already “preserved” when we called <code>.set_index()</code>, and any one of the 12 possible strings <code>VALUE1</code> through <code>VALUE12</code>. This final item allows us to remember which column that got eliminated the observation originated from.</p>
 <p>But, if we look at the index explicitly, we’ll notice an interesting detail:</p>
 <div id="fcb51bf6" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>temps.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>temperatures.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>MultiIndex([('ACW00011604', 1961,  'VALUE1'),
             ('ACW00011604', 1961,  'VALUE2'),
@@ -445,10 +445,10 @@ dtype: float64</code></pre>
 </div>
 </div>
 <p>We see that each observation is <em>explicitly</em> linked to the three aforementioned pieces of information (ID, year, <code>VALUE</code> column). It’s as if that our series was really a data frame in disguise, where the first 3 columns are the items in the index (ID, year, and <code>VALUE</code> column name) while the last column is the actual “data” of the series (the temperature recordings).</p>
-<p>Well, we can actually force this data frame to resurge by calling the <code>.reset_index()</code> method on <code>temps</code>, which eliminates the index that we manually specified above and replaces it with the default one (just numbers), but this would turn the current <code>MultiIndex</code> into “data columns” which is not possible in a Series, so <code>temps</code> will revert to being a data frame. The <strong>nicest and most important part</strong>, however, is because the <code>VALUE</code> column name is now in our index, it will be added as a new column within our data frame.</p>
+<p>Well, we can actually force this data frame to resurge by calling the <code>.reset_index()</code> method on <code>temperatures</code>, which eliminates the index that we manually specified above and replaces it with the default one (just numbers), but this would turn the current <code>MultiIndex</code> into “data columns” which is not possible in a Series, so <code>temperatures</code> will revert to being a data frame. The <strong>nicest and most important part</strong>, however, is because the <code>VALUE</code> column name is now in our index, it will be added as a new column within our data frame.</p>
 <div id="2b5a0222" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> temps.reset_index()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> temperatures.reset_index()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>temperatures.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
@@ -509,8 +509,8 @@ dtype: float64</code></pre>
 <p>First, let’s rename (using the <code>.rename()</code> method) our columns to something that we can interpret more easily. Note that the string that we have for <code>VALUE</code> precisely corresponds to the month in which the observation was made, so we name this column <code>Month</code>.</p>
 <p>Note that the <code>columns</code> argument of <code>.rename()</code> is a dictionary where the keys are the existing column names and the values are the names that we wish to give to the columns.</p>
 <div id="c40daf2a" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>temps <span class="op">=</span> temps.rename(columns <span class="op">=</span> {<span class="st">"level_2"</span>  : <span class="st">"Month"</span> , <span class="dv">0</span> : <span class="st">"Temp"</span>}) <span class="co">#Input as a dictionary.</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>temperatures <span class="op">=</span> temperatures.rename(columns <span class="op">=</span> {<span class="st">"level_2"</span>  : <span class="st">"Month"</span> , <span class="dv">0</span> : <span class="st">"Temp"</span>}) <span class="co">#Input as a dictionary.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>temperatures.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
@@ -570,11 +570,11 @@ dtype: float64</code></pre>
 <p>Now, we don’t want the values of the <code>Month</code> column to be have the <code>VALUE</code> string beforehand. It would make a lot more sense to just store the number at the very end. We also need to convert it to an integer (since right now it’s merely a string).</p>
 <p>We’ll also divide the <code>Temp</code> column by 100.</p>
 <div id="0738c9fc" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>temps[<span class="st">"Month"</span>] <span class="op">=</span> temps[<span class="st">"Month"</span>].<span class="bu">str</span>[<span class="dv">5</span>:].astype(<span class="bu">int</span>) </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>temps[<span class="st">"Temp"</span>]  <span class="op">=</span> temps[<span class="st">"Temp"</span>] <span class="op">/</span> <span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>temperatures[<span class="st">"Month"</span>] <span class="op">=</span> temperatures[<span class="st">"Month"</span>].<span class="bu">str</span>[<span class="dv">5</span>:].astype(<span class="bu">int</span>) </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>temperatures[<span class="st">"Temp"</span>]  <span class="op">=</span> temperatures[<span class="st">"Temp"</span>] <span class="op">/</span> <span class="dv">100</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="a2385c08" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>temps.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>temperatures.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
@@ -766,16 +766,16 @@ Number of regions in `countries`: 279</code></pre>
 <div id="4d2a7113" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `countries`: "</span>, <span class="bu">round</span>(countries.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span><span class="dv">1024</span>,<span class="dv">2</span>), <span class="st">"kilobytes"</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `stations`: "</span>, <span class="bu">round</span>(stations.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span><span class="dv">1024</span>,<span class="dv">2</span>), <span class="st">"kilobytes"</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `temps`: "</span>, <span class="bu">round</span>(temps.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span><span class="dv">1024</span>,<span class="dv">2</span>), <span class="st">"kilobytes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `temperatures`: "</span>, <span class="bu">round</span>(temperatures.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span><span class="dv">1024</span>,<span class="dv">2</span>), <span class="st">"kilobytes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Memory used by `countries`:  50.62 kilobytes
 Memory used by `stations`:  4340.02 kilobytes
 Memory used by `temps`:  1257153.36 kilobytes</code></pre>
 </div>
 </div>
-<p><code>countries</code> is relatively small, only taking up about 50.6 kilobytes. <code>stations</code>, however, seems to take up more than 4 megabytes. <code>temps</code>, though is massive!</p>
+<p><code>countries</code> is relatively small, only taking up about 50.6 kilobytes. <code>stations</code>, however, seems to take up more than 4 megabytes. <code>temperatures</code>, though is massive!</p>
 <div id="de29b55a" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `temps`: "</span>, <span class="bu">round</span>(temps.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span>(<span class="dv">1024</span><span class="op">**</span><span class="dv">2</span>),<span class="dv">2</span>), <span class="st">"megabytes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Memory used by `temperatures`: "</span>, <span class="bu">round</span>(temperatures.memory_usage(deep <span class="op">=</span> <span class="va">True</span>).<span class="bu">sum</span>()<span class="op">/</span>(<span class="dv">1024</span><span class="op">**</span><span class="dv">2</span>),<span class="dv">2</span>), <span class="st">"megabytes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Memory used by `temps`:  1227.69 megabytes</code></pre>
 </div>
@@ -798,7 +798,7 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
 <pre><code>279</code></pre>
 </div>
 </div>
-<p>Now, let’s move onto <code>temps</code>. How are we going to transfer more than a gigabyte of data? The answer is by doing so bit by bit. Specifically, we can iteratively transfer pieces of our data frame called chunks into our database. In the original Python notebook from class, our professor created a for loop that took advantage of an argument inside of <code>read_csv()</code> called <code>chunksize</code> that created an iterator out of our original data divided into a set number of pieces.</p>
+<p>Now, let’s move onto <code>temperatures</code>. How are we going to transfer more than a gigabyte of data? The answer is by doing so bit by bit. Specifically, we can iteratively transfer pieces of our data frame called chunks into our database. In the original Python notebook from class, our professor created a for loop that took advantage of an argument inside of <code>read_csv()</code> called <code>chunksize</code> that created an iterator out of our original data divided into a set number of pieces.</p>
 <p>In that for loop, our professor used a function he created that would clean the data frame as we did above before creating the iterator. So, even though we’ve already cleaned our data above, let’s walk through the steps one more time so that we can implement this for our iterator:</p>
 <ol type="1">
 <li>Use <code>.set_index()</code> and <code>.stack()</code> to place all temperature measurements in one column (series).</li>
@@ -832,10 +832,10 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
 <div id="941a425f" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, temps_chunk <span class="kw">in</span> <span class="bu">enumerate</span>(temps_iter):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> prepare_temps(temps_chunk)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    df.to_sql(<span class="st">"temps"</span>, conn, if_exists <span class="op">=</span> <span class="st">"replace"</span> <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"append"</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    df.to_sql(<span class="st">"temperatures"</span>, conn, if_exists <span class="op">=</span> <span class="st">"replace"</span> <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="st">"append"</span>, index <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Firstly, to properly iterate through <code>temps_iter</code>, we should be using the <code>enumerate()</code> function. If you recall from PIC16A, this essentially creates the idea of an index and a value (almost like a dictionary) for our iterator. The “value”, in this case, is a <code>pandas</code> <code>DataFrame</code> object that has (initially) 100000 rows. This is why we’re able to then input <code>temps_chunk</code> into the <code>prepare_temps()</code> function we wrote earlier.</p>
-<p>As for <code>if_exists</code>, we will only replace an existing table called <code>temps</code> (which should not exist) during the first iteration. For all other chunks, we’ll append to the table that is created during the first iteration.</p>
+<p>As for <code>if_exists</code>, we will only replace an existing table called <code>temperatures</code> (which should not exist) during the first iteration. For all other chunks, we’ll append to the table that is created during the first iteration.</p>
 <p>As good practice, we should close the connection that we made between this notebook and <code>climate.db</code>, since now that our file has all the information we need, we only need to access it while we’re running queries or making edits!</p>
 <div id="d995d820" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>conn.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -843,7 +843,7 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
 </section>
 <section id="summary-of-part-1" class="level2">
 <h2 class="anchored" data-anchor-id="summary-of-part-1">Summary of Part 1:</h2>
-<p>We’ve now created a SQL database called <code>climate.db</code> that contains 3 different tables: <code>temps</code>, <code>stations</code>, and <code>countries</code>. In order to do this, we had to use <code>sqlite</code> to link said database with our notebook, and we then had to use the <code>.to_sql()</code> method in order to convert the data that we had loaded as <code>pandas</code> data frames into tables.</p>
+<p>We’ve now created a SQL database called <code>climate.db</code> that contains 3 different tables: <code>temperatures</code>, <code>stations</code>, and <code>countries</code>. In order to do this, we had to use <code>sqlite</code> to link said database with our notebook, and we then had to use the <code>.to_sql()</code> method in order to convert the data that we had loaded as <code>pandas</code> data frames into tables.</p>
 <p>To make <code>countries</code>, we used a for loop with an iterator that allowed us to add chunks of the data to our table so as to not have to transfer a large amount of data at once.</p>
 </section>
 </section>
@@ -855,7 +855,7 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> longitude <span class="op">&gt;</span> <span class="dv">80</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>While not a complete pain to type, it’s a bit annoying to have to do this every time we want to access some data, especially if we plan to use that data in our Python notebook for some other purpose many times. In order to have an easier time creating our data visualizations, we’re going to create a function called <code>query_climate_database()</code> that allows us to run SQL queries from our notebook, once again using the <code>sqlite</code> package.</p>
 <p>In particular, I want to create a function that allows me to see how the average temperature during a given month in a specific country has changed over time. To do this, we’re going to map each station to the coefficient term of the linear regression of temperatures over time and display it on a map. This, of course, requires us to use plot-generating functions, but furthermore, it also requires me to query a large chunk of data (with <code>query_climate_database</code>). I wrote this function in a different file called <code>climate_database.py</code>.</p>
-<div id="408a0121" class="cell" data-execution_count="26">
+<div id="408a0121" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> climate_database <span class="im">import</span> query_climate_database</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> inspect</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(query_climate_database))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -881,7 +881,7 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
         FROM stations S
         INNER JOIN
         (SELECT T.ID, T.Year, T.Month, T.Temp, C.Name
-        FROM temps T
+        FROM temperatures T
         LEFT JOIN countries C ON SUBSTRING(T.ID,1,2) = C."FIPS 10-4"
         WHERE C.Name = "{country}" AND (T.Year BETWEEN {year_begin} AND {year_end}) AND T.Month = {month})
         AS t1 ON S.ID = t1.ID
@@ -1180,7 +1180,7 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
 <li>Additional information (such as the number of observations and the median range) should also be displayed for ease of viewing.</li>
 </ol>
 <p>Therefore, our SQL query should include sufficient information about our country of interest, the date range, and the temperatures. While this wasn’t covered in class, SQL also has <code>MAX()</code> and <code>MIN()</code> functions (which I learned about for my internship, so we can get this part of the work cut out for us in the SQL query. Below I show the code for <code>min_max_query</code>:</p>
-<div id="78b3fd33-4986-4083-a90a-5151c51b5b23" class="cell" data-execution_count="33">
+<div id="78b3fd33-4986-4083-a90a-5151c51b5b23" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> climate_database <span class="im">import</span> min_max_query</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> inspect</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(min_max_query))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1204,7 +1204,7 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
         FROM stations S
         INNER JOIN
         (SELECT T.ID, T.Year, T.Temp, C.Name
-        FROM temps T
+        FROM temperatures T
         LEFT JOIN countries C ON SUBSTRING(T.ID,1,2) = C."FIPS 10-4"
         WHERE C.Name = "{country}" AND T.Year BETWEEN {year_begin} AND {year_end})
         AS t1 ON S.ID = t1.ID) as t2
@@ -1217,7 +1217,7 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
 </code></pre>
 </div>
 </div>
-<p>The basic structure is identical to that of <code>query_climate_database</code>, so let’s just focus on what exactly is going on in the query itself. We see once again that we use subquerying, but here, we have two subqueries. The innermost one joins the <code>temps</code> and <code>countries</code> tables, almost identically to the subqery of <code>query_climate_database</code>, with less restrictive <code>WHERE</code> conditions since we don’t need to restrict to a certain month (that would defeat the purpose of getting a yearly range). The output of this first query is called <code>t1</code>. The second subquery then joins <code>t1</code> with <code>stations</code>, giving us the station name, and joining where the <code>ID</code>s are equivalent (just as in <code>query_climate_database)</code>. This second result is saved as <code>t2</code>.</p>
+<p>The basic structure is identical to that of <code>query_climate_database</code>, so let’s just focus on what exactly is going on in the query itself. We see once again that we use subquerying, but here, we have two subqueries. The innermost one joins the <code>temperatures</code> and <code>countries</code> tables, almost identically to the subqery of <code>query_climate_database</code>, with less restrictive <code>WHERE</code> conditions since we don’t need to restrict to a certain month (that would defeat the purpose of getting a yearly range). The output of this first query is called <code>t1</code>. The second subquery then joins <code>t1</code> with <code>stations</code>, giving us the station name, and joining where the <code>ID</code>s are equivalent (just as in <code>query_climate_database)</code>. This second result is saved as <code>t2</code>.</p>
 <p>Finally, from <code>t2</code> we grab <code>NAME</code>, <code>Year</code>, as well as <code>MAX(TEMP)</code> and <code>MIN(TEMP)</code> (which have slightly prettier names). This does not grab the maximum and minimum temperatures for all of <code>t2</code>, however. Just like with <code>pandas</code> data frames, we can use <code>GROUP BY</code> statements in SQL, but they go at the very end of a query. Here, we group by <code>NAME, Year</code>, which means that we group by every possible name-year combination (i.e., grouping two-dimensionally). This allows us to get the maximum and minimum temperatures for a specific station in a specific year, separate from all other max/min temperatures for that same station in a different year.</p>
 <p>Now we need to make the actual plotting function. Skip to the code block below the function body to see the explanation. Once again, I define some helper functions that we will with <code>transform</code> as well.</p>
 <div id="ccc6964c-1125-4840-b1af-54cae07ca0cb" class="cell" data-execution_count="34">
@@ -1337,7 +1337,7 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
 <li>Add any other necessary features.</li>
 </ul>
 <p>Let’s start with the query function:</p>
-<div id="51a79364-f299-4b81-8d38-79fb478d4f3c" class="cell" data-execution_count="42">
+<div id="51a79364-f299-4b81-8d38-79fb478d4f3c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> climate_database <span class="im">import</span> elevation_query</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> inspect</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(elevation_query))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1362,7 +1362,7 @@ Memory used by `temps`:  1257153.36 kilobytes</code></pre>
         FROM stations S
         INNER JOIN
         (SELECT T.ID, T.Year, T.Month, T.Temp, C.Name
-        FROM temps T
+        FROM temperatures T
         LEFT JOIN countries C ON SUBSTRING(T.ID,1,2) = C."FIPS 10-4"
         WHERE T.Year BETWEEN {year_begin} AND {year_end} AND T.Month = {month})
         AS t1 ON S.ID = t1.ID
