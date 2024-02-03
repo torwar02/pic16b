@@ -9,7 +9,7 @@
 <meta name="author" content="Zion Gassner">
 <meta name="dcterms.date" content="2024-01-28">
 
-<title>Zion’s Extraordinary Python Adventure - Webscraping</title>
+<title>Zion’s Extraordinary Python Adventure - Getting Your Favorite Movies: Using Scrapy to Crawl through the Web</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -173,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Webscraping</h1>
+      <h1 class="title">Getting Your Favorite Movies: Using Scrapy to Crawl through the Web</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">week 4</div>
                 <div class="quarto-category">homework 2</div>
@@ -213,8 +213,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="getting-your-favorite-movies" class="level1">
-<h1>Getting Your Favorite Movies</h1>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
 <p>It’s natural to be interested in works created by certain artists, and movies are no exception–if there’s an actor or actress that you’re a fan of, there’s a good chance that you’ll like the other films that they’ve appeared in. There are websites, like https://www.themoviedb.org, that conveniently arrange all of that information, but it can be tedious for a human being to have to go through it page by page.</p>
 <p>The internet, though, is made up of computers, and as such, has a structure to it that we can manipulate using computers. In particular, webpages are often designed with HTML–the ML of which means “markup language.” This means that websites are usually sorted into organized pieces of information that contain different markers, called tags, that signal what they’re used for. HTML tags are of the form <code>&lt;tag&gt; ... &lt;/tag&gt;</code>, where the information within the dots could be text, link, other tags, or much more things.</p>
 <p>By using a technique called <em>web scraping</em>, we can sift through web pages to search for specific tags and grab whatever information we want. To do this, we’re going to use a framework called <code>scrapy</code> that’s written in Python, but we won’t really be using a <code>jupyter</code> notebook as we have been previous. Rather, we’ll be editing files directly that use Python syntax but have a <em>lot</em> of machinery under the hood. The purpose of this post is not to meticulously detail every aspect of <code>scrapy</code>–I would have no idea how to do that–but rather to introduce some of its web scraping capabilities so that you can carry out something like this yourself.</p>
