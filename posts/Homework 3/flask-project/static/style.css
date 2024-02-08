@@ -1,0 +1,95 @@
+html {
+    font-family: Verdana, sans-serif;
+    background: #121b18;
+    padding: 0;
+}
+
+body {
+    max-width: 900px;
+    margin-left: 350px;
+}
+
+
+label {
+    color: #81888e;
+    font-family: Verdana, sans-serif;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    font-family: Verdana, sans-serif;
+    margin: 1rem 0;
+    text-align: left;
+}
+
+h4 {
+    color: rgb(137, 207, 240);
+    font-family: Verdana, sans-serif;
+    margin: 1rem 0;
+    text-align: left;
+}
+
+p {
+    color: rgb(255, 255, 255);
+    font-family: Verdana, sans-serif;
+    margin: 1rem 0;
+    text-align: left;
+    
+}
+
+a {
+    color: CornflowerBlue;
+    text-decoration: none;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid lightgray;
+}
+
+nav {
+    background: #121b18;
+    padding: 0;
+    border-radius: 25px;
+}
+
+nav ul  {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 1rem;
+}
+
+.content {
+    padding: 0;
+    background: #121b18;
+    border-radius: 25px;
+}
+
+.flash {
+    text-align: center;
+    margin: 1em 0;
+    padding: 0;
+    background: #123456;
+    border: 1px solid #123456;
+}
+
+.sidebar {
+    position: fixed; /* Fixed positioning to keep it in place */
+    top: 0; /* Position from the top of the viewport */
+    left: 0; /* Position from the left side of the viewport */
+    width: 200px; /* Width of the sidebar */
+    height: 100%; /* Height of the sidebar (full height of the viewport) */
+    background-color: #000000; /* Background color of the sidebar */
+}
+
+.sidebar img {
+    max-width: 100%; /* Make sure the image doesn't exceed the width of the sidebar */
+    display: block; /* Ensure the image is displayed as a block element */
+ /* Add some space below the image */
+}
