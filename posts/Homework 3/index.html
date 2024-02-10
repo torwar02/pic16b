@@ -193,6 +193,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Introduction</h1>
 <p>Up until now, we’ve been creating programs that we run locally on our system, but often times when we interact with something on a computer, we do so thanks to something that someone else has made that we’ve acquired through the internet. Now, by making a website using HTML and CSS, we’ll do the same (in theory, anyway, since we won’t be publicly hosting our website, but you could if you wanted to). We’ll also put our code onto a GitHub repository so that anyone can play with it freely.</p>
 <p>In this post, I’m going to create a simple website that gives the user the opportunity to send messages under a certain name or handle and will then be able to view such messages in a different page. The skeleton of the website will be designed via HTML templates, but we’ll be using a framework called Flask which allows us to write Python code specifically for our website, allowing us to incorporate more advanced techniques, including a SQL database which will contain users’ stored messages. Finally, we’ll also dabble a bit into CSS, which we can use to customize the look of our website, making it look like the popular messaging app Discord.</p>
+<section id="github-repository" class="level2">
+<h2 class="anchored" data-anchor-id="github-repository">GitHub Repository</h2>
+<p>While I provide a tutorial to create everything from scratch, you are free to download my files for the project and experiment with them however you like:</p>
+<p>https://github.com/torwar02/hw3</p>
+<p>Everything necessary is in the primary folder called <code>flask-project</code></p>
+</section>
 </section>
 <section id="getting-started-with-flask" class="level1">
 <h1>Getting Started with Flask</h1>
@@ -210,8 +216,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> g, Flask, render_template, request</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> redirect, url_for, abort</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, g, render_template, request</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> redirect, url_for</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>import</code> statements are nothing crazy, although it’s important to note that there are a lot of things that we have to retrieve from Flask itself, including <code>Flask</code>, which is necessary for making our website run, and <code>render_template</code>, without which we would not be able to view HTML files!</p>
@@ -254,13 +260,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/submit/"</span>, methods<span class="op">=</span>[<span class="st">'POST'</span>, <span class="st">'GET'</span>]) </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> submit():</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello, world!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> submit():</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This seems a bit overwhelming. Let’s break it down. The <code>@</code> operator in Python is called a <strong>decorator</strong> and is used to modify a function in the next line. We always modify the <code>route</code> method of <code>app</code> (which we made above), and the argument that we pass into <code>route</code> is a string containing the subdirectory on our page. For the ‘initial’ page we put just a slash. Below, we set it up for <code>/submit/</code>.</p>
 <p>Then we define the Python function corresponding to our website. We can name it anything we want (it doesn’t <em>necessarily</em> have to be the same as the string in the decorator), but just make sure it’s a name that makes sense, becuase we’ll need to reference it. The <strong>body</strong> of the function should contain the Python code that we want to run for the website. On the first page, we use the function <code>redirect</code> to take us to <code>/submit/</code>. Notice that we use <code>url_for</code> and call this on the string <code>"submit"</code> which corresponds to the name of the function below.</p>
-<p>In the next decorator, we also have an arugment called <code>methods</code> which contains a list <code>['POST', 'GET']</code>. Don’t worry about this for now–this will come in handy when we need to make changes to the webpage. For now, we have <code>print("Hello, world!"</code> just as a demonstration. If we call,</p>
+<p>In the next decorator, we also have an arugment called <code>methods</code> which contains a list <code>['POST', 'GET']</code>. Don’t worry about this for now–this will come in handy when we need to make changes to the webpage. For now, we have nothing. If we generate the website via</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">run</span> flask</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>we’ll see the following:</p>
+<p>and navigate to <code>http://127.0.0.1:5000/</code> or <code>localhost:5000</code></p>
+<p>we’ll see a blank page with the subdirectory <code>submit</code>.</p>
 <section id="body-of-submit" class="level2">
 <h2 class="anchored" data-anchor-id="body-of-submit">Body of <code>/submit/</code></h2>
 <p>The following code <strong>won’t work</strong> because I show a function that we haven’t implemented yet (but will soon):</p>
@@ -277,21 +283,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="get_message_db">get_message_db()</h2>
 <p>The function <code>insert_message</code> will place a message onto the current instance (<code>request</code>) of the website, via a SQL database, so first we need to make a function that simultaneously creates accesses the database (recall from the Week 1 post that <code>.connect</code> in <code>sqlite3</code> can do both). To do this, we’ll make a function called <code>get_message_db()</code>.</p>
 <p>Here’s the function:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_message_db():</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_message_db(): <span class="co">#create/access database</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> g.message_db</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        g.message_db <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"messages_db.sqlite"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> g.message_db <span class="co">#gets datbase from `g` object</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>: <span class="co">#should only go through here once</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        g.message_db <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"messages_db.sqlite"</span>) <span class="co">#makes database</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        cursor <span class="op">=</span> g.message_db.cursor()</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        cmd <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">        CREATE TABLE IF NOT EXISTS messages(</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">        handle TEXT,</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">        message TEXT</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">        );</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">        """</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">        """</span> <span class="co">#creates table</span></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        cursor.execute(cmd)</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        cursor.close()</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> g.message_db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> g.message_db <span class="co">#then returns datbaase</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We do this with <code>try</code> and <code>except</code> statements because we would get an error if the database doesn’t exist. Most of this should be review from the Week 1 post, including the use of <code>sqlite3.connect</code> to make and then connect to a database, which we call <code>messages_db</code>. Our SQL query creates a table called <code>messages</code> using the <code>CREATE TABLE IF NOT EXISTS</code> command. We specify the name of each column (<code>handle</code> and <code>message</code>) as well as the data type (<code>TEXT</code>). We execute the command, close the cursor, and send back the database.</p>
 <p>The only thing here that’s completely new is <code>g</code>, which is an attribute of <code>app</code>, that is, the file itself which comes with Flask. I am not well-versed enough in Flask to give an excellent explanation, but see this StackOverflow post for more info:</p>
 <p>https://stackoverflow.com/questions/30514749/what-is-the-g-object-in-this-flask-code</p>
@@ -300,15 +306,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="insert_message" class="level2">
 <h2 class="anchored" data-anchor-id="insert_message">insert_message()</h2>
 <p>This function is a bit hard to explain without the HTML template for <code>/submit</code>, but let’s walk through it:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> insert_message(request):</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    message <span class="op">=</span> request.form[<span class="st">'message'</span>]</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    handle <span class="op">=</span> request.form[<span class="st">'handle'</span>]</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> insert_message(request): <span class="co">#places messages into database</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    handle <span class="op">=</span> request.form[<span class="st">'handle'</span>] <span class="co">#extracts `handle`/`message` from form</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    message <span class="op">=</span> request.form[<span class="st">'message'</span>]</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    db <span class="op">=</span> get_message_db()</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    info <span class="op">=</span> pd.DataFrame([{<span class="st">'handle'</span>: handle, <span class="st">'message'</span> : message}])</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    info.to_sql(<span class="st">"messages"</span>, db, if_exists <span class="op">=</span> <span class="st">"append"</span>, index <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    info <span class="op">=</span> pd.DataFrame([{<span class="st">'handle'</span>: handle, <span class="st">'message'</span> : message}]) <span class="co">#places handle/message into df</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    info.to_sql(<span class="st">"messages"</span>, db, if_exists <span class="op">=</span> <span class="st">"append"</span>, index <span class="op">=</span> <span class="va">False</span>) <span class="co">#places into db</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    db.commit()</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    db.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I’ll explain this later, but keep in mind that this function is called inside of the <code>submit()</code> function, so we should be thinking that we’re on the submission page. We’ll be grabbing user-inputted variables called <code>message</code> and <code>handle</code> (which will be part of the HTML code) and store them in the function. We then connect to the database using <code>get_message_db()</code>, create a one-row data frame called <code>info</code> containing the handle and the message, and append it onto the <code>messages</code> table in the database (once again, review Homework 1 post for details on the <code>to_sql</code> method from Pandas). Then, we commit the changes and close the connection.</p>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    db.close()</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> handle, message <span class="co">#sends back `handle` and `message` to `submit()`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>I’ll explain this later, but keep in mind that this function is called inside of the <code>submit()</code> function, so we should be thinking that we’re on the submission page. We’ll be grabbing user-inputted variables called <code>message</code> and <code>handle</code> (which will be part of the HTML code) and store them in the function. We then connect to the database using <code>get_message_db()</code>, create a one-row data frame called <code>info</code> containing the handle and the message, and append it onto the <code>messages</code> table in the database (once again, review Homework 1 post for details on the <code>to_sql</code> method from Pandas). Then, we commit the changes, lose the connection, and send back the handle and messages.</p>
 </section>
 </section>
 <section id="html-templates" class="level1">
@@ -319,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The first thing that I wanted to remind you of is the fact that I wanted to make the webpage look like Discord, specifically, a Discord server used by UCLA students, which is why there’s referenced to this throughout the page:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!doctype</span> html<span class="dt">&gt;</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">link</span><span class="ot"> rel</span><span class="op">=</span><span class="st">"stylesheet"</span><span class="ot"> href</span><span class="op">=</span><span class="st">"{{ url_for('static', filename='style.css') }}"</span><span class="dt">&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>{% block title %}{% endblock %} - Homework 3 Website<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>{% block title %}{% endblock %} Fake Discord<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">nav</span><span class="dt">&gt;</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>Welcome to UCLA Students and Friends! <span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        Please see #rules-and-info to get started.</span>
@@ -335,8 +342,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src </span><span class="op">=</span> <span class="st">"https://cdn.discordapp.com/attachments/1186502778600820746/1204873997460971582/UsersSiderbar.png?ex=65d6515a</span><span class="er">&amp;</span><span class="st">is=65c3dc5a</span><span class="er">&amp;</span><span class="st">hm=f1282537c4f4f000be28a42e583e212f1763294cfde93973c80297b84824a535</span><span class="er">&amp;</span><span class="st">"</span><span class="ot"> height </span><span class="op">=</span> <span class="st">"800"</span><span class="ot"> width </span><span class="op">=</span> <span class="st">"250"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"position:fixed; top:0px;  right:0px"</span><span class="dt">&gt;</span></span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">section</span><span class="ot"> class</span><span class="op">=</span><span class="st">"content"</span><span class="dt">&gt;</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  {% block content %}{% endblock %}</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">section</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">header</span><span class="dt">&gt;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    {% block header %}{% endblock %}</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">header</span><span class="dt">&gt;</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  {% block content %}{% endblock %}</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">section</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>There’s a lot going on here, and I used the header from a Flask demo that our professor prepared for us as a template while adding my own contributions. We’ll walk through the major parts, but note that I don’t know a lot of the fine details regarding HTML–it’s important to keep in mind that by working with Python, Flask, CSS, and HTML, we’re using many different tools, and it’s unrealistic to be able to master all of them in a short period of time. I have referred to documentation when I was stuck, and I encourage you to do the same.</p>
 <p>Firstly we write <code>&lt;!doctype html&gt;</code> to signal that this is an HTML document. The second statement connects it to the file that we’ll look at later which incorporates our CSS settings.</p>
 <section id="title-and-nav" class="level3">
@@ -389,7 +399,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    message <span class="op">=</span> request.form[<span class="st">'message'</span>]</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    handle <span class="op">=</span> request.form[<span class="st">'handle'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In other words, we grab the <code>message</code> and <code>handle</code> variables from the <code>form</code> of <code>submit.html</code>. This is how we are able to get Python to interact with the website through Flask in order to store the messages!</p>
-<p>At the end of the <code>else</code> statement, we render the page once again but with <code>sec</code> set to <code>True</code>. We are allowed to input parameters into our function so long as they correspond with Jinja syntax. Returning to <code>submit.html</code>, we see that we have a statement <code>{% if sec == True %}</code>, which corresponds to such a variable. When the condition is satisfied, we create a line break <code>&lt;br&gt;</code> and display a message saying <code>Message sent</code>, after which we close the conditional statement and the block in general.</p>
+<p>At the end of the <code>else</code> statement, we render the page once again but with <code>sec</code> set to <code>True</code>. We are allowed to input parameters into our function so long as they correspond with Jinja syntax. Returning to <code>submit.html</code>, we see that we have a statement <code>{% if sec == True %}</code>, which corresponds to such a variable. When the condition is satisfied, we create a line break <code>&lt;br&gt;</code> and display a message saying <code>Message sent</code>, after which we close the conditional statement and the block in general. Here’s what the website looks like when the user is submitting a message!</p>
+<p>This image shows a user typing a message into the message form:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Image3.webp" class="img-fluid figure-img"></p>
+<figcaption>Image 3</figcaption>
+</figure>
+</div>
+<p>This one shows the submission message:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Image4.png" class="img-fluid figure-img"></p>
+<figcaption>Image 4</figcaption>
+</figure>
+</div>
 </section>
 </section>
 </section>
@@ -414,13 +438,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="view-1"><code>view()</code></h2>
 <p>Now that we have a function that can fetch items from the database, we’re going to need a function responsible for viewing our page, which we call <code>view</code> in <code>app.py</code>. As we did with <code>submit()</code>, we will need to return a <code>render_template()</code> statement in order to make the changes meaningful on the page. Here’s the code:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">"/view/"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> view():</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    postings <span class="op">=</span> random_messages(<span class="dv">5</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> view(): <span class="co">#For viewing messages</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    postings <span class="op">=</span> random_messages(<span class="dv">5</span>) <span class="co">#Get 5 random messages from database</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    length <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    message_tuples <span class="op">=</span> []</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(length):</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        message_tuples.append(<span class="bu">tuple</span>(postings.iloc[i,:]))</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> render_template(<span class="st">'view.html'</span>, message_tuples <span class="op">=</span> message_tuples)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        message_tuples.append(<span class="bu">tuple</span>(postings.iloc[i,:])) <span class="co">#Convert df rows into tuples</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> render_template(<span class="st">'view.html'</span>, message_tuples <span class="op">=</span> message_tuples) <span class="co">#display `view`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Firstly, we call the <code>random_messages()</code> function with <code>n = 5</code>, and then, we create a list that will contain tuples from the <code>postings</code> data frame, which will make it easier to interface with Jinja in <code>view.html</code>. Using a <code>for</code> loop, we add the <code>handle</code> and <code>message</code> as a tuple into the list by using the <code>.iloc</code> method to fetch what’s in each row.</p>
 <p>Then, we return <code>render_template</code> on <code>view.html</code> with an argument called <code>message_tuples</code> set equal to, well, <code>message_tuples</code>, which will be a variable that we place inside of the Jinja syntax.</p>
 </section>
@@ -441,6 +465,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>{% endblock %}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We once again extend <code>base.html</code> to add onto what we already have. In the <code>header</code> block, we place a title with the text <code>#general</code> (as is common on Discord servers).</p>
 <p>Then in the <code>content</code> block, we create a <code>for</code> loop in Jinja in order to print out precisely the messages that we had placed as tuples in <code>message_tuples</code> in <code>view()</code> from <code>app.py</code>. This loop first prints out the handle (which is the element at the 0th index) as an <code>&lt;h4&gt;</code> (header 4) while the actual message is simply kept as a paragraph (~normal text) <code>&lt;p&gt;</code>. This has the effect of highlighting the name in larger text, creating a slight break, and then putting the message in smaller text, which is more reminiscent of Discord’s actual appearance. Then, we place a line break after each message so that they aren’t directly on top of each other, and then we end the <code>for</code> loop and block.</p>
+<p>Here’s an image showing the <code>view</code> page with the message we sent earlier:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Image5.png" class="img-fluid figure-img"></p>
+<figcaption>Image 5</figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="css" class="level1">
@@ -470,10 +501,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="text-specifications" class="level3">
 <h3 class="anchored" data-anchor-id="text-specifications">Text specifications</h3>
 <p>There are a few types of text tags that we use throughout our site. We’re going to change them one by one but largely apply the same ideas.</p>
-
-
+<div class="sourceCode" id="cb18"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>html {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font-family</span><span class="ch">:</span> <span class="dv">Verdana</span><span class="op">;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background</span><span class="ch">:</span> <span class="cn">#121b18</span><span class="op">;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">#81888e</span><span class="op">;</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">max-width</span><span class="ch">:</span> <span class="dv">900</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin-left</span><span class="ch">:</span> <span class="dv">350</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>h4 {</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">#89cff0</span><span class="op">;</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">rem</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-align</span><span class="ch">:</span> <span class="dv">left</span><span class="op">;</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">#81888e</span><span class="op">;</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">rem</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-align</span><span class="ch">:</span> <span class="dv">left</span><span class="op">;</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>p {</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">#ffffff</span><span class="op">;</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">rem</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">text-align</span><span class="ch">:</span> <span class="dv">left</span><span class="op">;</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>label {</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">#81888e</span><span class="op">;</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The only parts that require a lot of explanation above are the <code>margin</code> attributes. These were largely copied from a CSS markup example that was given to us. Please visit the following website and the section on “Margin - Shorthand Property” for a detailed explanation https://www.w3schools.com/css/css_margin.asp – essentially, the first number refers to the amount of space given from the <em>top</em> and the second refers to the space from the <em>right</em>. <code>rem</code> is a unit that takes into account font sizes: <code>https://www.sitepoint.com/understanding-and-using-rem-units-in-css/</code></p>
+<p>I set some of these settings to what they are because otherwise the page wouldn’t look right–it’s not common for a lot of trial and error to be necessary for this sort of process.</p>
+</section>
+<section id="other-specifications" class="level3">
+<h3 class="anchored" data-anchor-id="other-specifications">Other Specifications</h3>
+<p>There are a few other CSS settings that I’ve tweaked:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>a {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span><span class="ch">:</span> <span class="cn">CornflowerBlue</span><span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>nav ul  {</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span><span class="ch">:</span> <span class="dv">flex</span><span class="op">;</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">list-style</span><span class="ch">:</span> <span class="dv">none</span><span class="op">;</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">margin</span><span class="ch">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>nav ul li a {</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">display</span><span class="ch">:</span> <span class="dv">block</span><span class="op">;</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The template I got this from set the link (that is, <code>a</code>) color to cornflower blue, which I really like. We also specify the settings for the unordered list <code>&lt;ul&gt;</code> and the list item links <code>&lt;li&gt;</code> in <code>base.html</code>. The settings in <code>nav ul</code> I also took from the template that we had, but I like how they look– <code>display: none</code> makes it so that they’re side-by-side, <code>list-style: none</code> removes bullet points, and the <code>margin</code> and <code>padding</code> keep them adequately spaced. I discovered what these things do by seeing what happened to the website when I tweaked the settings.</p>
+<p>Similarly, for <code>nav ul li a</code>, we use <code>block</code> for <code>display</code> to place some space between the <code>&lt;nav&gt;</code> and the body below, and we also use some padding.</p>
+<p>Below we can see where each CSS element corresponds to on the webpages:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Image2.jpg" class="img-fluid figure-img"></p>
+<figcaption>image 2</figcaption>
+</figure>
+</div>
 </section>
 </section>
+</section>
+<section id="thanks-for-reading-my-post-3" class="level1">
+<h1>Thanks for reading my post :3</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pusheen.com/wp-content/uploads/2023/11/Capybar_Hot_Springs_GIF.gif" class="img-fluid figure-img"></p>
+<figcaption>Pusheen in the Tub</figcaption>
+</figure>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
