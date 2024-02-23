@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.537">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zion Gassner">
+<meta name="dcterms.date" content="2024-02-15">
+
+<title>Zion’s Extraordinary Python Adventure - How fast we can we discretize a second-order differential equation?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Zion’s Extraordinary Python Adventure</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Zion’s Blog</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">How fast we can we discretize a second-order differential equation?</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">week 6</div>
+                <div class="quarto-category">homework 4</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Zion Gassner </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 15, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Aside from PIC 16A-level Python knowledge, this post expects you to be decently familiar with linear algebra and multivariable calculus. The formulas I use are taken from Professor Ko’s materials.</p>
+<p>Many physical processes are modeled using differential equations, but because such equations involving limiting processes, actually visualizing them in their purest form is not possible. As such, we have to use some sort of approximation method in order to actually do so. Linear methods are the simplest, as you have probably seen in a calculus class.</p>
+<p>When we attempt to approximate functions of multiple variables, however, it is often impractical to write out linear approximations using linear combinations of terms. It is, however, much easier to condense this information into a matrix and use matrix-vector multiplication in order to discretize the solution of a differential equation based on some initial values and a step-size (essentially, similar to a linear recurrence relation).</p>
+<p>In our case, we want to approximate a solution to the two-dimensional heat equation, which models the amount of heat present in two-dimensional space as it diffuses over time. The differential equation is as follows:</p>
+<p><span class="math inline">\(\frac{\partial f(x,t)}{\partial t} = \frac{\partial^2f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2}\)</span></p>
+<p>That is, the rate at which the amount of heat present at a specific point in two-dimensional changes over time is related to the acceleration of this heat over a <em>spatial</em> dimension. It should not be surprising, therefore, that a discrete, linear approximation of a solution thus depends on having access to values of <span class="math inline">\(f\)</span> at points neighboring a given point <span class="math inline">\((x,y)\)</span>:</p>
+<p><span class="math inline">\(u_{i,j}^{k+1} \approx u_{i,j}^{k} + \epsilon\left(u_{i-1,j}^{k}+u_{i+1,j}^{k}+u_{i,j-1}^{k}+u_{i,j+1}^{k} - 4u_{i,j}^{k}\right)\)</span></p>
+<p>That is, at time <span class="math inline">\(k+1\)</span>, the amount of heat present at <span class="math inline">\((i,j)\)</span> is approximately equal to the amount of heat present at the previous time plus a step size <span class="math inline">\(\epsilon\)</span> (think about this as a very small change in time) multiplied by the amount of heat present in the four neighboring points minus four times the current amount of heat–that is, it depends on the amount of heat coming in from the point’s surroundings and also the amount of heat going out into the four neighboring directions.</p>
+<p>One final thing is what’s known as the “boundary condition” which allows for heat to escape from the system. If <span class="math inline">\(f\)</span> takes values over an <span class="math inline">\(N\times N\)</span> grid, then we denote <span class="math inline">\(u_{-1,j}^k = u_{N,j}^k = u_{i,-1}^k = u_{i,N}^k = 0\)</span> for all <span class="math inline">\(k\)</span> (assuming we index from zero, which would mean that the indices <span class="math inline">\(-1\)</span> and <span class="math inline">\(N\)</span> are not found on our original grid).</p>
+<section id="base-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="base-assumptions">Base Assumptions</h2>
+<p>Per Professor Ko’s requests, we will be using the following specifications for our model:</p>
+<div id="44d985fc" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">101</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>epsilon <span class="op">=</span> <span class="fl">0.2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># construct initial condition: 1 unit of heat at midpoint. </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>u0 <span class="op">=</span> np.zeros((N, N))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>u0[<span class="bu">int</span>(N<span class="op">/</span><span class="dv">2</span>), <span class="bu">int</span>(N<span class="op">/</span><span class="dv">2</span>)] <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>u_test <span class="op">=</span> u0.copy()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>plt.imshow(u0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-2-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>That is, a 101 by 101 grid, a step size of 0.2, and no heat at all except for one unit in the very middle. Based on this, we’re going to be investigating four different ways we can model the approximation presented earlier.</p>
+</section>
+</section>
+<section id="method-1-matrix-multiplication" class="level1">
+<h1>Method 1: Matrix Multiplication</h1>
+<p>Returning to the previously shown approximation:</p>
+<p><span class="math inline">\(u_{i,j}^{k+1} \approx u_{i,j}^{k} + \epsilon\left(u_{i-1,j}^{k}+u_{i+1,j}^{k}+u_{i,j-1}^{k}+u_{i,j+1}^{k} - 4u_{i,j}^{k}\right)\)</span></p>
+<p>Notice that at time <span class="math inline">\(k+1\)</span>, the heat present at a given point is nothing but the current heat plus a linear combination of neighboring points’ values. It is natural to wonder if we can thus take the current heat and add some sort of matrix multiplied to a vector of all of the current heat values to represent this process. We can, indeed, do this. Note, however, that we’ve been storing <span class="math inline">\(u_{i,j}\)</span> in a matrix, but we now want to tinker with these values as a vector. This will require us to convert the matrix into a vector, which we can luckily do using the <code>flatten</code> method from <code>numpy</code>.</p>
+<section id="approximation-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="approximation-matrix">Approximation Matrix</h2>
+<p>In particular, the matrix that we will be multiplying our heat vector by is of size <span class="math inline">\(N^2*N^2\)</span> and will look something like this:</p>
+<p><img src="Image1.png" alt="drawing" width="200"></p>
+<p>Where each <span class="math inline">\(B\)</span> is a matrix that looks like the following:</p>
+<p><img src="Image2.png" alt="drawing" width="200"></p>
+<p>Professor Ko showed us a way to generate the matrix which encodes the linear transformation for our approximation. Here, I’ve encoded it in a function called <code>get_A</code> which, along with all the other functions for this post, is in <code>heat_equation.py</code>.</p>
+<div id="0879e311" class="cell" data-scrolled="true" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> inspect</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> heat_equation</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(heat_equation.get_A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>def get_A(N):
+    """Prepares a linear approximation for advancing a two-dimensional heat
+    simulation in the form of a matrix
+    Args:
+        N: An integer denoting the side length of the square grid for the simulation
+        
+    Returns:
+        A: An NxN matrix (numpy array) that encodes the approximation transformation
+    """
+    n = N * N
+    diagonals = [-4 * np.ones(n), np.ones(n-1), np.ones(n-1), np.ones(n-N), np.ones(n-N)]
+    diagonals[1][(N-1)::N] = 0
+    diagonals[2][(N-1)::N] = 0
+    A = np.diag(diagonals[0]) + np.diag(diagonals[1], 1) + np.diag(diagonals[2], -1) + np.diag(diagonals[3], N) + np.diag(diagonals[4], -N)
+    return A
+</code></pre>
+</div>
+</div>
+<div id="a698f5b8" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> get_A(N)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A.shape,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(10201, 10201) 
+
+[[-4.  1.  0. ...  0.  0.  0.]
+ [ 1. -4.  1. ...  0.  0.  0.]
+ [ 0.  1. -4. ...  0.  0.  0.]
+ ...
+ [ 0.  0.  0. ... -4.  1.  0.]
+ [ 0.  0.  0. ...  1. -4.  1.]
+ [ 0.  0.  0. ...  0.  1. -4.]]</code></pre>
+</div>
+</div>
+<p>As we can see, our matrix has <span class="math inline">\(101\cdot101 = 10201\)</span> rows/columns and the (block) diagonal shape as presented above. Now, let us implement our simulation using matrix multiplication. This first function, <code>advance_time_matvecmul</code>, was made by professor Ko.</p>
+<div id="18217854" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(heat_equation.advance_time_matvecmul))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>def advance_time_matvecmul(A,u, epsilon):
+    """Advances the simulation by one timestep, via matrix-vector multiplication
+    Args:
+        A: An N x N numpy array used to operate on the heat grid.
+        u: N x N grid state at timestep k
+        epsilon: stability constant
+
+    Returns:
+        N x N Grid state at instant k+1
+    """
+    N = u.shape[0]
+    u = u + epsilon * (A @ u.flatten()).reshape((N, N))
+    return u
+</code></pre>
+</div>
+</div>
+<p>Recall that <code>@</code> is the matrix multiplication operator. Thus, the function takes the current grid <code>u</code>, and adds epsilon times the linear combination as shown above but in the form of matrix-vector multiplication, namely, our special matrix <code>A</code> multiplied by the grid <code>u</code> flattened into a one-dimensional array. This was why we needed <code>A</code> to be an extremely large matrix, by the way–if we were to put all of the entries in <code>u</code> into a single vector, it would indeed be <span class="math inline">\(101\cdot101 = 10201\)</span> entries long.</p>
+<p>Let’s, then, try visualizing the spread of the heat over time! We’ll make a function that helps visualize this for us. As specified by Professor Ko, we want to run the simulation for 2700 iterations and plot the system for every 300 iterations in a 3 by 3 grid. We’ll also make sure our function times how long it takes for our simulation to run (I use the <code>default_timer</code> from the <code>timeit</code> library).</p>
+<div id="e388cc30" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> timeit <span class="im">import</span> default_timer <span class="co">#To time</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_plot(func,u0,A<span class="op">=</span><span class="va">None</span>,direct_manip <span class="op">=</span> <span class="va">True</span>):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Plots the state of a heat diffusion simulation in a 3x3 grid</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">    every 300 iterations up to iteration 2700.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">        func: The function used to conduct the simulation</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">        u0: The matrix/array that contains the initial state of the system.</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">        A: The matrix used to carry out the linear approximation for heat diffusion.</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">           Note that this does not need to be specified for functions that directly</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">           manipulate ``u0``</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">        direct_manip: A boolean set by default to True which controls whether or not</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">                      our function uses a matrix multiplication or direct manipulation</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">                      technique</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    fig, axs <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>)) <span class="co">#Makes 3 by 3 grid</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> default_timer()</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    heat_matrix <span class="op">=</span> u0.copy() <span class="co">#Copy of the original `u0`</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">2701</span>):</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> direct_manip:</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>            heat_matrix <span class="op">=</span> func(heat_matrix,epsilon)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>            heat_matrix <span class="op">=</span> func(A,heat_matrix,epsilon) <span class="co">#Progresses the simulation by 1 step for</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">300</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            axs[(i<span class="op">-</span><span class="dv">300</span>)<span class="op">//</span><span class="dv">900</span>, ((i<span class="op">-</span><span class="dv">300</span>)<span class="op">%</span><span class="dv">900</span>)<span class="op">//</span><span class="dv">300</span>].imshow(heat_matrix) <span class="co">#Places graph onto grid according to</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>            <span class="co">#iteration number.</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    end <span class="op">=</span> default_timer() <span class="co">#Finish timer</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Time to execute: </span><span class="sc">{</span>end<span class="op">-</span>start<span class="sc">}</span><span class="ss"> seconds"</span>) <span class="co">#Print necessary time</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you can see our function above takes in a simulation function of some sort (there will be others!) and loops through 2700 different iterations and graphs every 300 on a grid of <code>matplotlib</code> subplots. As for the coordinates of these plots, you can figure this out with some basic modular arithmetic (both are shifted by 300 to account for indexing from 0. The rows involve integer division by 900 while the columns are the remainder when divided by 300 within each group of 900).</p>
+<p>Note that the input <code>A</code> corresponds to the matrix that we use to advance the simulation. The argument <code>direct_manip</code> will become relevant later in this post, but we essentially need it so that we know what sort of function we’re dealing with.</p>
+<p>We also use the <code>default_timer()</code> function from the <code>timeit</code> package to see how long it takes for our code to run. Let’s give it a try.</p>
+<div id="7be70862" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>u0 <span class="op">=</span> u_test.copy()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>visualize_plot(heat_equations.advance_time_matvecmul,u0,A,direct_manip <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time to execute: 40.459757999982685 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Well, this looks really cool! Unfortunately, it also takes a long time to run…40 seconds for something like this is way too long and amounts to nearly 14 milliseconds per iteration. Why does this take so long? Well, recall that we have to multiply a matrix by a vector. This involves conducting <span class="math inline">\(10201^2\)</span> multiplications per iteration, which requires a large amount of computing power.</p>
+<p>What can we do to fix this? Well, recall from when we first defined <code>A</code> that <em>most</em> of the elements are zero– in fact, if we recall, there are 7 non-zero entries in each 3-by-3 block matrix, which makes for about <span class="math inline">\(\frac{10201}{3}\cdot7\)</span> non-zero entries out of the massive <span class="math inline">\(10201^2\)</span> total, which is only .023%, more or less! This means that over 99% of our computations are wasted on multiplying numbers by zero (and we know what that evaluates to).</p>
+</section>
+</section>
+<section id="method-2-sparse-matrix-in-jax" class="level1">
+<h1>Method 2: Sparse Matrix in <code>jax</code></h1>
+<p>There is, however, a way we can make this more efficient. Matrices that are mostly zero are called <em>sparse</em> matrices, and the package <code>jax</code> comes with a module called <code>sparse</code> that speeds up matrix operations with sparse matrices. Read this link for the documentation:</p>
+<p>https://jax.readthedocs.io/en/latest/jax.experimental.sparse.html</p>
+<p>Let’s, then, implement essentially the same function but by using sparse matrices. But before we do that…</p>
+<section id="quick-introduction-to-jnp" class="level2">
+<h2 class="anchored" data-anchor-id="quick-introduction-to-jnp">Quick introduction to <code>jnp</code></h2>
+<p><code>jax</code> is actually a machine learning package, but what makes it special is that it has been created in such a way as to optimize computationally intensive operations. As such, it has its own way of processing arrays which means that, by default, <code>jax</code> functions are not compatible with <code>numpy</code> arrays. However, there is a module within <code>jax</code> called <code>jnp</code> that essentially allows us to use <code>jax</code> arrays with almost the same functionalities as <code>numpy</code> arrays. This is why we will need to import both <code>sparse</code> from <code>jax.experimental</code> as well as <code>jax.numpy</code> in order to make our second function–<code>advance_time_spmatvec</code>–work. Also, <code>jax</code> arrays get converted into <code>numpy</code> arrays when interacting with <code>matplotlib</code> plots, so we’ll have no issue there as well.</p>
+<div id="5e90433b" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> jax.experimental <span class="im">import</span> sparse</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jax</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(heat_equation.advance_time_spmatvec))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>def advance_time_spmatvec(A, u, epsilon):
+    """Advances the simulation by one timestep, via matrix-vector multiplication of sparsified BCOO matrices
+    Args:
+        A: an N x N sparsified array used to operate on the heat grid.
+        u: N x N grid state at timestep k
+        epsilon: stability constant
+
+    Returns:
+        N x N Grid state at instant k+1
+    """
+    N = u.shape[0]
+    u= u + epsilon * (A @ jnp.ravel(u)).reshape((N, N))
+    return u
+</code></pre>
+</div>
+</div>
+<p>A few things to note:</p>
+<p>A ‘normal’ array is referred to as a <em>dense</em> array, which we have to convert into a sparse one using the <code>fromdense()</code> function from <code>sparse</code>. In <code>heat_equation</code>, I implemented a function, <code>get_sparse_A</code> that allows us to create a sparse matrix that is numerically identical to <code>A</code> as in the previous case:</p>
+<div id="9facb6f5" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(heat_equation.get_sparse_A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>def get_sparse_A(N):
+    """Prepares a linear approximation for advancing a two-dimensional heat
+    simulation in the form of a sparse `jnp`array.
+    Args:
+        N: An integer denoting the side length of the square grid for the simulation
+        
+    Returns:
+        A: An NxN matrix (BCOO sparsified `jnp` array)
+        that encodes the approximation transformation
+    """
+    A = get_A(N)
+    A_sp_matrix = sparse.BCOO.fromdense(A)
+    return A_sp_matrix
+</code></pre>
+</div>
+</div>
+<p>We rely on the <code>get_A</code> function that we saw earlier simply because the <code>.fromdense</code> method included in <code>sparse.BCOO</code> can take a <code>numpy</code> array and convert it to a sparce one.</p>
+<div id="2a5cb850-d589-44a5-9f77-33d2df18f58a" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>A_sp_matrix <span class="op">=</span> heat_equation.get_sparse_A(N)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A_sp_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BCOO(float32[10201, 10201], nse=50601)
+BCOO(float32[10, 10], nse=100)</code></pre>
+</div>
+</div>
+<p><code>BCOO</code> stands for “Batched coordinate.” The object that we create is created specifically to work with sparse matrix functions. Note that printing out the sparse matrix of type <code>BCOO</code> does not display the numbers of the matrix.</p>
+<p>The other important thing to note is that we use the function <code>jnp.ravel</code> instead of <code>np.flatten</code>. I’m not sure why there isn’t a method called <code>flatten</code> for <code>jax</code>, but a simple Google search cleared this all up:</p>
+<p>https://jax.readthedocs.io/en/latest/_autosummary/jax.numpy.ravel.html</p>
+<div id="8134bc00" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>u0 <span class="op">=</span> u_test.copy()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>visualize_plot(heat_equations.advance_time_spmatvec, u0,A_sp_matrix, direct_manip <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time to execute: 1.7815180409816094 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-11-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>1.8 seconds. Much faster! Our timing is now only based on doing a number of multiplications proportional to <span class="math inline">\(N^2 = 10201\)</span> rather than <span class="math inline">\(N^4 = N^2\cdot N^2=102^4 = 108243216\)</span> calculations.</p>
+</section>
+</section>
+<section id="method-3-direct-operation-with-numpy" class="level1">
+<h1>Method 3: Direct operation with <code>numpy</code></h1>
+<p>While we’ve been able to model this as a linear transformation via matrix-vector-multiplication, that’s not entirely necessary for us to do. We could also directly manipulate the matrix entries in order to do so in <code>numpy</code>. In this way, we will avoid having to do many costly multiplications. We’ll call our function <code>advance_time_numpy</code></p>
+<section id="attempt-1-naive" class="level2">
+<h2 class="anchored" data-anchor-id="attempt-1-naive">Attempt 1 (Naive)</h2>
+<p>My first time around, I tried manually doing this entry-by-entry using for loops and arrived at the following result:</p>
+<div id="e046eeeb" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> advance_time_numpy_naive(u, epsilon):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> u.shape[<span class="dv">0</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    u_expanded <span class="op">=</span> np.hstack((np.zeros(N<span class="op">+</span><span class="dv">2</span>).reshape([N<span class="op">+</span><span class="dv">2</span>,<span class="dv">1</span>]),np.hstack((np.vstack((np.vstack((np.zeros(N).reshape([<span class="dv">1</span>,N]),u)),np.zeros(N).reshape([<span class="dv">1</span>,N]))),np.zeros(N<span class="op">+</span><span class="dv">2</span>).reshape([N<span class="op">+</span><span class="dv">2</span>,<span class="dv">1</span>])))))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Way too long</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(u_expanded.shape[<span class="dv">0</span>]):</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(u_expanded.shape[<span class="dv">1</span>]):</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> ((i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,N<span class="op">+</span><span class="dv">1</span>)) <span class="kw">and</span> (j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,N<span class="op">+</span><span class="dv">1</span>))):</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>                u_expanded[i,j] <span class="op">=</span> u_expanded[i,j]<span class="op">+</span>epsilon<span class="op">*</span>(u_expanded[i<span class="op">-</span><span class="dv">1</span>,j]<span class="op">+</span>u_expanded[i<span class="op">+</span><span class="dv">1</span>,j]<span class="op">+</span>u_expanded[i,j<span class="op">-</span><span class="dv">1</span>]<span class="op">+</span>u_expanded[i,j<span class="op">+</span><span class="dv">1</span>]<span class="op">-</span><span class="dv">4</span><span class="op">*</span>u_expanded[i,j])</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#Cut off, but the above manually copies the approximation`            </span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> u_expanded[<span class="dv">1</span>:N<span class="op">+</span><span class="dv">1</span>,<span class="dv">1</span>:N<span class="op">+</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="3422ceaa" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>u0 <span class="op">=</span> u_test.copy()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>visualize_plot(advance_time_roll_naive, u0,A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time to execute: 23.30165791699983 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-13-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>So, 23 seconds is better than the original matrix multiplication method, but this is still far too slow! Also, what on earth is going on with my code? Well, here’s an outline of what I wanted to do:</p>
+<ol type="1">
+<li>Pass in a matrix and surround it with zeroes (<code>u_expanded</code>) so that we can let the heat escape</li>
+<li>For each entry present in the original matrix (hence the conditional statement in the nested for loop), update it so that we use the discrete approximation of the differential equation’s solution.</li>
+<li>Return the subset of the expanded matrix that corresponds to the original matrix.</li>
+</ol>
+<p>This, however, is quite slow since we go through every single entry. Also, the code for making the matrix surrounded by zeroes is really messy as well. After a while, though, I figured out that I could make major improvements:</p>
+<ol type="1">
+<li><p>There is a function in <code>numpy</code> called <code>pad</code> that can be used to surround a two-dimensional <code>numpy</code> array with rows/columns of a specified input (seriously, all I had to do was Google “numpy surround matrix” and find this StackOverflow post: https://stackoverflow.com/questions/35751306/python-how-to-pad-numpy-array-with-zeros)</p></li>
+<li><p>We can use <code>numpy</code>’s vectorized matrix arithmetic functionalities to make things a lot smoother.</p></li>
+</ol>
+</section>
+<section id="attempt-2-final" class="level2">
+<h2 class="anchored" data-anchor-id="attempt-2-final">Attempt 2 (Final)</h2>
+<p>I’ll go over the syntax for <code>pad</code> when we look at my actual function, but the part that conceptually took the most work was figuring out how to update each entry without having to use a <code>for</code> loop.</p>
+<p>Recall from PIC16A that if we use an arithmetic operation between two <code>numpy</code> arrays with the same dimensions, we essentially apply the operation element-wise:</p>
+<div id="4f807d24" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">4</span>]])</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([[<span class="dv">7</span>,<span class="dv">8</span>],[<span class="dv">9</span>,<span class="dv">10</span>]])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">+</span>B)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A<span class="op">*</span>B) <span class="co">#This is the Hadamard (element-wise) product, NOT matrix multiplication!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[ 8 10]
+ [12 14]]
+[[ 7 16]
+ [27 40]]</code></pre>
+</div>
+</div>
+<p>These operations go by quick, so it would be very nice if we could apply this onto <code>u</code> in our function. The problem, though, is that these operations only work on each involved matrix’s corresponding element–if we add four different matrices, for example, we add each matrix’s [0,0], [0,1], … and so on’s elements. But our discrete approximation references <em>neighboring</em> elements of a matrix. So, then, what are we going to do?</p>
+</section>
+<section id="vectorized-manipulation" class="level2">
+<h2 class="anchored" data-anchor-id="vectorized-manipulation">Vectorized Manipulation</h2>
+<p>Recall that we essentially need to implement the following step: <span class="math inline">\(u_{i,j}^{k+1} \approx u_{i,j}^{k} + \epsilon\left(u_{i-1,j}^{k}+u_{i+1,j}^{k}+u_{i,j-1}^{k}+u_{i,j+1}^{k} - 4u_{i,j}^{k}\right)\)</span></p>
+<p>So we need data from five different points: the point <span class="math inline">\((i,j)\)</span>, and the four points immediately above and below it. If we want to take advantage of vectorized operations, we need to make other matrices with the same dimensions but with the elements <em>slightly</em> shifted. That is, if we want to change <code>u[1,1]</code> by adding epsilon times <code>u[0,1]</code>, for example, we need to make a new matrix <code>u_shift</code> such that <code>u_shift[1,1] = u_[0,1]</code>. But, how are we going to do this? I’ll show an example.</p>
+<p>Consider a much more simplified version of our problem, where we only have heat values in a 3-by-3 matrix:</p>
+<p><img src="Image3.png" alt="drawing" width="100"></p>
+<p>When we apply our border of zeroes onto it, it will look like this:</p>
+<p><img src="Image4.png" alt="drawing" width="200"></p>
+<p>Now, let’s say we want the simulation to continue by one step. Let’s focus on the entry [1,1] indexing from 0, that is 5. In addition to this point itself, we need 4 other points: the ones directly above/below and next to the point:</p>
+<p><img src="Image5.png" alt="drawing" width="100"></p>
+<p>Our plan, then, will be to make a 3-by-3 matrix that has each of these entries (4,6, 2, and 8) out of the <em>expanded</em> matrix such that the entry [1,1] corresponds to the number we want. For instance, let’s start with 4. We need to make this the center of a 3 by 3 matrix, so imagine drawing a 3-by-3 grid around the point and crossing everything else out:</p>
+<p><img src="Image6.png" alt="drawing" width="200"></p>
+<p>This is equivalent to taking the expanded matrix, removing the first and last row, and removing the last two columns. In other words, we would have 4 equal to <code>u_expanded[1:-1, :-2]</code> (remember subsetting form PIC16A?). Let’s see if this logic holds for another point. What if instead we wanted to do this for the number 7, which is [0,2] in our original matrix? We would need the 0 on the left to be the entry [0,2] of a 3x3 matrix–that is, the bottom left:</p>
+<p><img src="Image7.png" alt="drawing" width="200"></p>
+<p>We do the exact same thing! Remove the top and bottom rows, and remove the left two columns. It looks like this logic will work for the entirety of our matrix. Let’s apply the same analogy to the point to the <em>right</em> of our point of interest, so going back to [1,1], we need to make a 3x3 subset of the expanded matrix where the 6 is in the center:</p>
+<p><img src="Image8.png" alt="drawing" width="200"></p>
+<p>When it comes to the rows we get rid of, we do the same thing (omit first and last), but this time, we get rid of the first two columns from the <em>left</em>, so we should ideally have <code>u_expanded[1:-1, 2:]</code>. Below you can see the logic that applies for the entries above and below our point of interest:</p>
+<p><img src="Image9.png" alt="drawing" width="400"></p>
+<p>So, for getting the entry above, we should eliminate the first and final column as well as the bottom two rows. For the entry below, we also eliminate the first/final column but eliminate the first two rows. All in all, we have the following pattern:</p>
+<p><img src="Image11.jpg" alt="drawing" width="400"></p>
+<p>Now we’re ready to show the actual code:</p>
+<div id="4a08a7a2" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(heat_equation.advance_time_numpy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>def advance_time_numpy(u, epsilon):
+    """Advances the simulation by one timestep by directly manipulating the values of the heat grid.
+    Args:
+        u: N x N grid state at timestep k
+        epsilon: stability constant
+
+    Returns:
+        N x N Grid state at instant k+1
+    """
+    u_expanded = np.pad(u, ((1,1),(1,1)), mode = 'constant', constant_values = 0)
+    u +=  epsilon * (u_expanded[:-2, 1:-1] + u_expanded[2:, 1:-1] + u_expanded[1:-1, :-2] + u_expanded[1:-1, 2:] - 4 * u)
+    
+    return u
+</code></pre>
+</div>
+</div>
+</section>
+<section id="np.pad" class="level2">
+<h2 class="anchored" data-anchor-id="np.pad"><code>np.pad</code></h2>
+<p>Let’s start with <code>np.pad</code>. This will, as the name suggests, <em>pad</em> an existing <code>numpy</code> array with new rows/columns. The first argument is the array itself, and the second argument is a tuple of tuples. Each tuple is the number of rows/columns that we want to wrap around, either “before” (i.e., above/to the left) the array or “after” (i.e., below/to the right) the array. Since we just want all zeroes to be surrounding the matrix, we just have to fill in ones for the entries. We set <code>mode</code> equal to <code>constant</code> to make sure that we’re inputting the same value for all of the new entries, and we make that value 0 with the <code>constant_values</code> argument.</p>
+</section>
+<section id="the-calculation" class="level2">
+<h2 class="anchored" data-anchor-id="the-calculation">The calculation</h2>
+<p>The explanation I gave previously was simply a set-up to make this part much easier to understand. First of all, recall from our discretization that we add the term multiplied by <span class="math inline">\(\epsilon\)</span> to the current entry <span class="math inline">\(u_{i,j}^k\)</span>, which is why we use the <code>+=</code> operator. We use this on <code>u</code> and not <code>u_expanded</code> becuase we don’t care about the “extra” entries that are only found in the latter but not in the former <em>for the purposes of the return value</em>. Of course, the values present in <code>u_expanded</code> are extremely important for the right-hand side of this operator. As shown in my diagram, the four subsets corresponding to <code>u_expanded</code> are, in the order shown in my function, the entries above, below, to the left, and to the right, of any given entry in <code>u</code>. Since, like we said earlier, matrix arithmetic operations are <em>vectorized</em>, this will apply to every possible entry in the matrix nearly at once! Finally, we subtract off <code>4*u</code> as that represents the heat flowing out of the point. Then, we return the grid <code>u</code>.</p>
+<p>Let’s see how fast our function is.</p>
+<div id="d2ff521c" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>u0 <span class="op">=</span> u_test.copy()</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>visualize_plot(heat_equations.advance_time_roll, u0, direct_manip <span class="op">=</span> <span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time to execute: 0.11722458299482241 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-16-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="method-4-direction-operation-with-jax" class="level1">
+<h1>Method 4: Direction operation with <code>jax</code></h1>
+<p>Oh my goodness! That was really fast. Let’s see if we can make it <em>even</em> faster by using a feature found in <code>jax</code> called <code>jit</code>: just-in-time compilation. I am not an expert on how <code>jit</code> works, for that, you can read this link here: https://docs.w3cub.com/tensorflow~guide/performance/xla/index</p>
+<p>Essentially, though, it is a method of conducting certain operations, especially those involving linear algebra (hence, <code>jit</code> works with something called <code>XLA</code>–accelerated linear algebra) that is different from the way it is normally implemented in Python. This can vasty speed up our computations. Since we saw that direct array manipulation was so fast with <code>numpy</code>, maybe we can make it even faster if we redefine essentially the same function but with <code>jit</code> instead.</p>
+<p>To do this, we’ll just make a “<code>jax</code>ed” version of our <code>advance_time_numpy</code> function called <code>advance_time_jax</code>. Let’s look at the code:</p>
+<div id="1f2ee6e5" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(heat_equation.advance_time_jax))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>@jax.jit
+def advance_time_jax(u, epsilon):
+    """Advances the simulation by one timestep by directly manipulating the values of the heat grid
+    using just-in-time compilation (jit) from `jax`.
+    Args:
+        u: N x N grid state at timestep k
+        epsilon: stability constant
+
+    Returns:
+        N x N Grid state at instant k+1
+    """
+    u_expanded = jnp.pad(u, ((1,1),(1,1)), mode = 'constant', constant_values = 0)
+    u += epsilon * (u_expanded[:-2, 1:-1] + u_expanded[2:, 1:-1] + u_expanded[1:-1, :-2] + u_expanded[1:-1, 2:] - 4 * u)
+
+    return u
+</code></pre>
+</div>
+</div>
+<p>Not much has changed in the body of the function, except for the fact that we use <code>jnp.pad</code> instead of <code>np</code>. Before the function, however, we see that we have a decorator (remember from HTML?) which says <code>@jax.jit</code>. For our purposes, this just lets the compiler know that we want to use just-in-time compilation. We always put it before the function definition header.</p>
+<div id="f4dd37b6" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>u0 <span class="op">=</span> u_test.copy()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>visualize_plot(heat_equations.advance_time_jax, u0)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Time to execute: 0.05747704196255654 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-18-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>0.05 seconds! That’s <em>incredibly</em> quick. We were able to do this by firstly eliminating many unnecessary computations by directly manipulating our matrices, and furthermore, we leveraged just-in-time compilation through <code>jax</code> to make this process go so much faster.</p>
+</section>
+<section id="comparison-and-conclusion" class="level1">
+<h1>Comparison and Conclusion</h1>
+<p>In this post, we’ve looked at 4 methods of conducting a linear heat simulation on a 2-d surface that increased in efficiency. However, they were essentially <em>two</em> methods, but with one made faster thanks to the power of <code>jax</code>:</p>
+<section id="matrix-multiplication-methods" class="level2">
+<h2 class="anchored" data-anchor-id="matrix-multiplication-methods">Matrix Multiplication Methods</h2>
+<section id="naive-numpy" class="level3">
+<h3 class="anchored" data-anchor-id="naive-numpy">Naive (<code>numpy</code>)</h3>
+<p>We started this post using the most naive method possible–manually multiplying a gigantic matrix on our system over and over again. While mathematically beautiful to understand a differential equation as a series of matrix-vector products, it was computationally incredibly expensive, taking nearly 40 seconds.</p>
+<p>While it wasn’t difficult for <em>me</em> to implement, it would’ve been difficult to create the <code>get_A</code> function from scratch.</p>
+</section>
+<section id="improved-sparse" class="level3">
+<h3 class="anchored" data-anchor-id="improved-sparse">Improved (<code>sparse</code>)</h3>
+<p>We were able to speed up this process so that it took less than two seconds by taking advantage of sparse matrices from <code>jax</code>. This was able to speed up our process a lot by eliminating many unnecessary calculations. It is important to recognize, however, that we were only able to leverage this method because the matrix <code>A</code> mostly had zeroes. Nonetheless, the increased efficiency was very helpful, and learning how to use <code>jax</code> for this purpose was very easy.</p>
+</section>
+</section>
+<section id="direct-manipulation-methods" class="level2">
+<h2 class="anchored" data-anchor-id="direct-manipulation-methods">Direct Manipulation Methods</h2>
+<section id="naive-numpy-1" class="level3">
+<h3 class="anchored" data-anchor-id="naive-numpy-1">Naive (<code>numpy</code>)</h3>
+<p>Taking advantage of vectorization to improve our process was very helpful and also less mathematically intensive in the sense that it was easy to wrap my head around the idea of subtracting heat from the center and adding that of the surroundings. However, figuring out the exact logic of what entries to add where did take some time–as can be seen in the fact that I had to draw some diagrams–. However, this method proved to be very quick, so I think it was definitely worth it. Furthermore, even though figuring out the correct commands in the function’s body was difficult, the code ended up being quite simple! I’m glad we did it this way, and its great that it’s a lot faster than even the method that uses sparse matrices. Anything involving multiplications takes up a lot of computing power, so it’s great that we were able to avoid most of them here.</p>
+</section>
+<section id="improved-jit" class="level3">
+<h3 class="anchored" data-anchor-id="improved-jit">Improved (<code>jit</code>)</h3>
+<p>And, if that wasn’t good enough, slightly changing our function and taking advantage of just-in-time compilation to make Python run even faster made our function execute lightning fast–nearly 800 times faster than our very first one. Even though I’ve been only given a very simple introduction to <code>jax</code> as a whole, I was able to use it to help increase my code’s efficiency, so it wasn’t very difficult at all!</p>
+</section>
+</section>
+</section>
+<section id="thanks-for-reading-my-post-3" class="level1">
+<h1>Thanks for reading my post :3</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://pusheen.com/wp-content/uploads/2023/11/Capybar_Hot_Springs_GIF.gif" class="img-fluid figure-img"></p>
+<figcaption>Pusheen in the Tub</figcaption>
+</figure>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
