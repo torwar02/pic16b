@@ -288,7 +288,7 @@ window.Quarto = {
 </code></pre>
 </div>
 </div>
-<div id="a698f5b8" class="cell" data-execution_count="39">
+<div id="a63e4a95" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> get_A(N)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A.shape,<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
@@ -409,7 +409,7 @@ window.Quarto = {
 </div>
 <p>A few things to note:</p>
 <p>A ‘normal’ array is referred to as a <em>dense</em> array, which we have to convert into a sparse one using the <code>fromdense()</code> function from <code>sparse</code>. In <code>heat_equation</code>, I implemented a function, <code>get_sparse_A</code> that allows us to create a sparse matrix that is numerically identical to <code>A</code> as in the previous case:</p>
-<div id="9facb6f5" class="cell" data-execution_count="40">
+<div id="e5ba0bbe" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(heat_equation.get_sparse_A))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>def get_sparse_A(N):
@@ -589,7 +589,7 @@ BCOO(float32[10, 10], nse=100)</code></pre>
 <p>Oh my goodness! That was really fast. Let’s see if we can make it <em>even</em> faster by using a feature found in <code>jax</code> called <code>jit</code>: just-in-time compilation. I am not an expert on how <code>jit</code> works, for that, you can read this link here: https://docs.w3cub.com/tensorflow~guide/performance/xla/index</p>
 <p>Essentially, though, it is a method of conducting certain operations, especially those involving linear algebra (hence, <code>jit</code> works with something called <code>XLA</code>–accelerated linear algebra) that is different from the way it is normally implemented in Python. This can vasty speed up our computations. Since we saw that direct array manipulation was so fast with <code>numpy</code>, maybe we can make it even faster if we redefine essentially the same function but with <code>jit</code> instead.</p>
 <p>To do this, we’ll just make a “<code>jax</code>ed” version of our <code>advance_time_numpy</code> function called <code>advance_time_jax</code>. Let’s look at the code:</p>
-<div id="1f2ee6e5" class="cell" data-execution_count="52">
+<div id="f086fb0a" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(inspect.getsource(heat_equation.advance_time_jax))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>@jax.jit
